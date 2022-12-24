@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128.28 121.1">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: #1c75bc;
+      }
+
+      .cls-1, .cls-3 {
+        font-family: JetBrainsMonoExtraBoldNerdFontComplete-ExtBd, 'JetBrainsMonoExtraBold Nerd Font';
+        font-size: 72px;
+      }
+
+      .cls-3 {
+        letter-spacing: -.06em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <text class="cls-1" transform="translate(0 61.92)"><tspan x="0" y="0">M</tspan></text>
+      <path class="cls-2" d="M2.15,72.86H12.34l8.11,34.77c.18,.67,.32,1.4,.44,2.18,.11,.78,.21,1.51,.3,2.18,.09,.8,.18,1.61,.27,2.41h.4c.09-.8,.2-1.61,.33-2.41,.09-.67,.2-1.4,.33-2.18,.13-.78,.27-1.51,.4-2.18l7.97-34.77h10.12l-12.86,48.24H14.75L2.15,72.86Z"/>
+      <text class="cls-3" transform="translate(49.51 93.67)"><tspan x="0" y="0">ED</tspan></text>
+    </g>
+  </g>
+</svg>

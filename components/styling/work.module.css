@@ -1,0 +1,25 @@
+.projectCardIcon {
+    font-size: 120%;
+}
+
+.projectCardLink {
+    margin-top: 15px;
+}
+
+.projectCardLink > a {
+    font-family: 'Roboto Mono', monospace !important;
+    letter-spacing: -0.025px !important;
+}
+
+.technologyBadge {
+    margin-right: 4px;
+    text-transform: lowercase !important;
+}
+
+.cardDeckFlex > div {
+    flex: 1 1 300px !important;
+}
+
+.cardDeckTop { 
+    margin-top: -10px !important;
+}

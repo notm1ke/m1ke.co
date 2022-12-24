@@ -1,0 +1,37 @@
+{
+    "name": "m1ke.co",
+    "version": "5.0.0",
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start",
+        "type-check": "tsc"
+    },
+    "dependencies": {
+        "@heroicons/react": "^1.0.1",
+        "@mdi/font": "^5.9.55",
+        "@mdi/js": "^5.9.55",
+        "@mdi/react": "^1.5.0",
+        "@popperjs/core": "^2.9.2",
+        "axios": "^0.21.1",
+        "bootstrap": "^4.6.0",
+        "moment": "^2.29.1",
+        "next": "^10.2.3",
+        "qs": "^6.10.1",
+        "react": "^17.0.1",
+        "react-device-detect": "^2.1.2",
+        "react-dom": "^17.0.1",
+        "react-scroll": "^1.8.2",
+        "reactstrap": "^8.9.0",
+        "sass": "^1.43.4",
+        "swr": "^0.5.6"
+    },
+    "devDependencies": {
+        "@types/node": "^12.12.21",
+        "@types/qs": "^6.9.6",
+        "@types/react": "^17.0.2",
+        "@types/react-dom": "^17.0.1",
+        "@types/react-scroll": "^1.8.2",
+        "typescript": "4.0"
+    }
+}
