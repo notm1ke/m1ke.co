@@ -26,12 +26,15 @@ export interface WorkCardProps {
     description: JSX.Element | string;
     link?: string;
     hideExtraLink?: boolean;
+    sectionHeader?: boolean;
+    mobile?: boolean;
 }
 
 export const WorkCard: React.FC<WorkCardProps> = ({
-    icon, title, titleColor, containerStyle, description, link, hideExtraLink
+    icon, title, titleColor, containerStyle, description,
+    link, hideExtraLink, sectionHeader, mobile
 }) => (
-    <div className={`card shadow shadow-lg--hover ${containerStyle ?? 'mt-5'} ${cardStyles.rgCardSm}`}>
+    <div className={`card shadow shadow-lg--hover ${mobile ? sectionHeader ? 'mt-4' : 'mt-1' : containerStyle ?? 'mt-5'} ${cardStyles.rgCardSm}`}>
         <div className="card-body">
             <div className="d-flex">
                 <div>

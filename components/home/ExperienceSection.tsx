@@ -1,6 +1,7 @@
 import styles from '../styling/home.module.css';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 
 type ExperienceEntry = {
     company: string;
@@ -60,17 +61,24 @@ const EXPERIENCE: ExperienceEntry[] = [
 
 export const ExperienceSection: React.FC = () => {
     const [selected, setSelected] = useState(0);
+    const [desktop, setDesktop] = useState(true);
+
+    useEffect(() => {
+        if (isMobile) setDesktop(false);
+    }, []);
 
     return (
         <div className="mt-2">
             <div className="row">
                 <div className="col-md-1">
-                    <div className="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        {EXPERIENCE.map((entry, index) => (
-                            <a className={`nav-link ${index === selected ? `active ${styles.experienceCompanyTabActive}` : 'shine'} mb-2 ${styles.experienceCompanyTab}`} id={`v-pills-${index}-tab`} data-toggle="pill" href={`#v-pills-${index}`} role="tab" aria-controls={`v-pills-${index}`} aria-selected="true" onClick={() => setSelected(index)}>
-                                <img src={entry.image} width={60} height={60} />
-                            </a>
-                        ))}
+                    <div className={`nav ${desktop ? 'flex-column' : 'flex-row'}`} id="v-pills-tab" role="tablist" aria-orientation={desktop ? 'vertical' : 'horizontal'}>
+                        {
+                            EXPERIENCE.map((entry, index) => (
+                                <a className={`nav-link cursor ${index === selected ? `active ${styles.experienceCompanyTabActive}` : 'shine'} mb-2 ${styles.experienceCompanyTab}`} id={`v-pills-${index}-tab`} data-toggle="pill" role="tab" aria-controls={`v-pills-${index}`} aria-selected="true" onClick={() => setSelected(index)}>
+                                    <img src={entry.image} width={60} height={60} />
+                                </a>
+                            ))
+                        }
                     </div>
                 </div>
                 <div className="col-md-11">
@@ -85,8 +93,9 @@ export const ExperienceSection: React.FC = () => {
                                         <div className="item" key={index}>
                                             <div className="item-label mb-3">
                                                 <div className="mb-2">
-                                                    {position.title} 
-                                                    <span className="font-weight-300 ml-1 item-date">
+                                                    {position.title}
+                                                    {!desktop && <br/>}
+                                                    <span className={`font-weight-300 ${desktop ? 'ml-1' : ''} item-date`}>
                                                         ({position.type}, {position.from} - {position.current ? 'Now' : position.to})
                                                     </span>
                                                 </div>

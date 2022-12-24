@@ -1,6 +1,9 @@
 import MdiIcon from '@mdi/react';
 import styles from '../components/styling/home.module.css';
 
+import { useEffect, useState } from 'react';
+import { isMobile } from 'react-device-detect';
+
 import {
     ExperienceSection,
     FeaturedWorkCard,
@@ -44,7 +47,7 @@ const PROJECTS: EnumerableProject[] = [
     {
         key: 'ilefa',
         title: 'ILEFA Labs',
-        description: 'ILEFA Labs is a development organization dedicated to creating software to help students succeed.',
+        description: 'ILEFA is a development group dedicated to creating software to help students succeed.',
         containerStyle: styles.rowCardTopSpacing,
         icon: <MdiIcon path={mdiDogSide} size="21px" className={`${styles.workCardIcon} fa-fw`} />,
         link: 'https://www.ilefa.club',
@@ -54,7 +57,7 @@ const PROJECTS: EnumerableProject[] = [
         key: 'snapshots',
         title: 'Snapshots',
         description: 'A public-domain data warehouse for historical UConn information.',
-        containerStyle: styles.rowCardSpacing,
+        containerStyle: styles.rowCardTopSpacingSecondary,
         icon: <MdiIcon path={mdiTableClock} size="21px" className={`${styles.workCardIcon} fa-fw`} />,
         link: 'https://snapshots.ilefa.club',
         hideExtraLink: true
@@ -177,7 +180,7 @@ const PROJECTS: EnumerableProject[] = [
         description: 'A unique chat-based games bot built for the Discord\'s Hackweek.',
         containerStyle: 'mr--1 mt-2',
         icon: <MdiIcon path={mdiGamepadSquare} size="21px" className={`${styles.workCardIcon} fa-fw`} />,
-        link: 'https://github.com/notm1ke/vpro',
+        link: 'https://github.com/notm1ke/gamesboat',
     },
     {
         key: 'basic',
@@ -197,7 +200,11 @@ const PROJECTS: EnumerableProject[] = [
     },
 ]
 
-const CobaltCard = () => (
+interface CobaltCardProps {
+    desktop: boolean
+}
+
+const CobaltCard: React.FC<CobaltCardProps> = ({ desktop }) => (
     <FeaturedWorkCard
         title="Cobalt"
         link="https://cobalt.lol"
@@ -214,8 +221,8 @@ const CobaltCard = () => (
                 </p>
             </div>
         }
-        containerStyle="mt-5 mr--1"
-        attributeStyles={styles.cobaltBoxSpacing}
+        containerStyle={desktop ? styles.cobaltFeaturedCard : 'mt-1'}
+        attributeStyles={desktop ? styles.cobaltBoxSpacing : ''}
         attributes={[
             {
                 name: 'Unique Visitors',
@@ -236,119 +243,127 @@ const CobaltCard = () => (
     />
 );
 
-const HomePage = () => (
-    <main>
-        <Nav />
-        <div className="position-relative">
-            <div className="section section-hero section-shaped background-main">
-                <div className="shape shape-style-3 shape-default"></div>
-                <div className={styles.pageHeader}>
-                    <div className="container shape-container d-flex align-items-center py-lg">
-                        <div className="col px-0">
-                            <div className="row align-items-center justify-content-center">
-                                <div className="col-lg-6 text-center">
-                                    <img src="/logo.svg" width={200} height={200} />
-                                    <h2 className={`${styles.tagline} display-4 font-weight-normal text-white cursor`}>
-                                        <b>CS @ UConn</b> — Full Stack Software Engineer
-                                    </h2>
-                                    <div className="btn-wrapper mt-4">
-                                        <a href="https://www.github.com/notm1ke" className="btn btn-dark bg-ilefa-dark btn-icon mt-3 mb-sm-0 shine text-lowercase">
-                                            <span className="btn-inner--icon"><i className="fab fa-github"></i></span>
-                                            <span className="btn-inner--text">Visit my GitHub</span>
-                                        </a>
-                                        <a href="https://www.linkedin.com/in/mike-medved" className="btn btn-dark bg-ilefa-dark btn-icon mt-3 mb-sm-0 shine text-lowercase">
-                                            <span className="btn-inner--icon"><i className="fab fa-linkedin"></i></span>
-                                        </a>
+const HomePage = () => {
+    const [desktop, setDesktop] = useState(true);
+
+    useEffect(() => {
+        if (isMobile) setDesktop(false);
+    }, []);
+
+    return (
+        <main>
+            <Nav />
+            <div className="position-relative">
+                <div className="section section-hero section-shaped background-main">
+                    <div className="shape shape-style-3 shape-default"></div>
+                    <div className={styles.pageHeader}>
+                        <div className="container shape-container d-flex align-items-center py-lg">
+                            <div className="col px-0">
+                                <div className="row align-items-center justify-content-center">
+                                    <div className="col-lg-6 text-center">
+                                        <img src="/logo.svg" width={200} height={200} />
+                                        <h2 className={`${styles.tagline} display-4 font-weight-normal text-white cursor`}>
+                                            <b>CS @ UConn</b> — Full Stack Software Engineer
+                                        </h2>
+                                        <div className="btn-wrapper mt-4">
+                                            <a href="https://www.github.com/notm1ke" className="btn btn-dark bg-ilefa-dark btn-icon mt-3 mb-sm-0 shine text-lowercase">
+                                                <span className="btn-inner--icon"><i className="fab fa-github"></i></span>
+                                                <span className="btn-inner--text">Visit my GitHub</span>
+                                            </a>
+                                            <a href="https://www.linkedin.com/in/mike-medved" className="btn btn-dark bg-ilefa-dark btn-icon mt-3 mb-sm-0 shine text-lowercase">
+                                                <span className="btn-inner--icon"><i className="fab fa-linkedin"></i></span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <section className={`section section-lg ${styles.sectionSeparator} background-main`}>
+                    <div className="container" id="body">
+                        <h4 className={`text-white ${styles.workTitle}`}>
+                            <i className="fas fa-person-circle-question fa-fw"></i> A little bit about me
+                            <br /><span className={`text-white ${styles.workTagline}`}>
+                                Hey there! My name is Mike, and I am currently a Junior Computer Science major (and Information Assurance + Math minor) at UConn. I have interests in Web Development (full stack), Security, Cloud Systems, and Distributed Systems. While pursuing my degree, I am also working for UConn as a Software Engineer / Systems Administrator.
+                            </span>
+                        </h4>
+
+                        <div className="mt-6 mb-4">
+                            <h4 className={`text-white ${styles.workTitle}`}>
+                                <i className="fas fa-briefcase fa-fw"></i> Where I've worked
+                                <br /><span className={`text-white ${styles.workTagline}`}>
+                                    I have been working in various places in the software industry since 2020, and have worked on a variety of projects for the below companies.
+                                </span>
+                            </h4>
+                        </div>
+
+                        <ExperienceSection />
+
+                        <div className="mt-6 mb--4" id="projects">
+                            <h4 className={`text-white ${styles.workTitle}`}>
+                                <i className="fas fa-layer-group fa-fw"></i> My technical projects
+                                <br /><span className={`text-white ${styles.workTagline}`}>
+                                    I have worked on a variety of projects, both personal and professional - below are some of my most notable ones.
+                                </span>
+                            </h4>
+                        </div>
+
+                        {/* ilefa projects */}
+                        <div className="row">
+                            <div className={`col-md-4 ${desktop ? 'ml--3' : ''} align-items-stretch`}>
+                                <WorkCard {...PROJECTS[0]} sectionHeader mobile={!desktop} />
+                                <WorkCard {...PROJECTS[1]} mobile={!desktop} />
+                            </div>
+
+                            <div className="col-md-8 align-items-stretch">
+                                <CobaltCard desktop={desktop} />
+                            </div>
+
+                            {
+                                PROJECTS.slice(2, 6).map(project => (
+                                    <div className="col-md-4" key={project.key}>
+                                        <WorkCard {...project} mobile={!desktop} />
+                                    </div>
+                                ))
+                            }
+                        </div>
+
+                        {/* warp projects */}
+                        <div className="row">
+                            <div className="col-md-4 align-items-stretch">
+                                <WorkCard {...PROJECTS[6]} sectionHeader mobile={!desktop} />
+                            </div>
+
+                            {
+                                PROJECTS.slice(7, 10).map(project => (
+                                    <div className="col-md-4 align-items-stretch" key={project.key}>
+                                        <WorkCard {...project} mobile={!desktop} />
+                                    </div>
+                                ))
+                            }
+                        </div>
+
+                        {/* personal/uconn projects */}
+                        <div className="row">
+                            <div className="col-md-4 align-items-stretch">
+                                <WorkCard {...PROJECTS[10]} sectionHeader mobile={!desktop} />
+                            </div>
+
+                            {
+                                PROJECTS.slice(11, 20).map(project => (
+                                    <div className="col-md-4 align-items-stretch" key={project.key}>
+                                        <WorkCard {...project} mobile={!desktop} />
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </section>
+                <Footer className="bg-dark" white />
             </div>
-            <section className={`section section-lg ${styles.sectionSeparator} background-main`}>
-                <div className="container" id="body">
-                    <h4 className={`text-white ${styles.workTitle}`}>
-                        <i className="fas fa-person-circle-question fa-fw"></i> A little bit about me
-                        <br /><span className={`text-white ${styles.workTagline}`}>
-                            Hey there! My name is Mike, and I am currently a Junior Computer Science major (and Information Assurance + Math minor) at UConn. I have interests in Web Development (full stack), Security, Cloud Systems, and Distributed Systems. While pursuing my degree, I am also working for UConn as a Software Engineer / Systems Administrator.
-                        </span>
-                    </h4>
-
-                    <div className="mt-6 mb-4">
-                        <h4 className={`text-white ${styles.workTitle}`}>
-                            <i className="fas fa-briefcase fa-fw"></i> Where I've worked
-                            <br /><span className={`text-white ${styles.workTagline}`}>
-                                I have been working in various places in the software industry since 2020, and have worked on a variety of projects for the below companies.
-                            </span>
-                        </h4>
-                    </div>
-
-                    <ExperienceSection />
-
-                    <div className="mt-6 mb--4" id="projects">
-                        <h4 className={`text-white ${styles.workTitle}`}>
-                            <i className="fas fa-layer-group fa-fw"></i> My technical projects
-                            <br /><span className={`text-white ${styles.workTagline}`}>
-                                I have worked on a variety of projects, both personal and professional - below are some of my most notable ones.
-                            </span>
-                        </h4>
-                    </div>
-
-                    {/* ilefa projects */}
-                    <div className="row">
-                        <div className="col-md-8 align-items-stretch">
-                            <CobaltCard />
-                        </div>
-
-                        <div className="col-md-4 ml--3 align-items-stretch">
-                            <WorkCard {...PROJECTS[0]} />
-                            <WorkCard {...PROJECTS[1]} />
-                        </div>
-
-                        {
-                            PROJECTS.slice(2, 6).map(project => (
-                                <div className="col-md-4" key={project.key}>
-                                    <WorkCard {...project} />
-                                </div>
-                            ))
-                        }
-                    </div>
-
-                    {/* warp projects */}
-                    <div className="row">
-                        <div className="col-md-4 align-items-stretch">
-                            <WorkCard {...PROJECTS[6]} />
-                        </div>
-
-                        {
-                            PROJECTS.slice(7, 10).map(project => (
-                                <div className="col-md-4 align-items-stretch" key={project.key}>
-                                    <WorkCard {...project} />
-                                </div>
-                            ))
-                        }
-                    </div>
-
-                    {/* personal/uconn projects */}
-                    <div className="row">
-                        <div className="col-md-4 align-items-stretch">
-                            <WorkCard {...PROJECTS[10]} />
-                        </div>
-
-                        {
-                            PROJECTS.slice(11, 20).map(project => (
-                                <div className="col-md-4 align-items-stretch" key={project.key}>
-                                    <WorkCard {...project} />
-                                </div>
-                            ))
-                        }
-                    </div>
-                </div>
-            </section>
-            <Footer className="bg-dark" white />
-        </div>
-    </main>
-)
+        </main>
+    )
+}
 
 export default HomePage;

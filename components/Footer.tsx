@@ -20,7 +20,7 @@ export const Footer: React.FC<FooterProps> = ({ white, noBackground, className }
             <Row className="align-items-center justify-content-md-between">
                 <div className="col-6">
                     <div className={`copyright ${styles.footerBrand} ${white ? " text-white" : ""}`}>  
-                        <a href="https://www.ilefa.club" className={`${white ? "text-white" : ""} shine`}>
+                        <a href="https://www.m1ke.co" className={`${white ? "text-white" : ""} shine`}>
                             <img src="/brand.svg" width={25} height={25} className="mt--1" />
                         </a>
                         {" "} © 2016-{new Date().getFullYear()}{" "}

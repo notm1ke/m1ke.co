@@ -173,6 +173,13 @@
 .rowCardTopSpacing {
     margin-top: 3rem !important;
     margin-right: -1.25rem !important;
+    margin-left: 1rem !important;
+}
+
+.rowCardTopSpacingSecondary {
+    margin-top: 0.5rem !important;
+    margin-right: -1.25rem !important;
+    margin-left: 1rem !important;
 }
 
 .rowCardTopSpacingSecond {
@@ -204,4 +211,9 @@
 
 .experienceCompanyTabActive {
     border-color: #7795f8 !important;
+}
+
+.cobaltFeaturedCard {
+    margin-top: 3rem !important;
+    margin-right: -1.25rem !important;
 }

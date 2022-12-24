@@ -72,7 +72,7 @@ export const Nav: React.FC = () => {
                                     <li className="nav-item" key={element.key}>
                                         {
                                             element.type === 'action' && (
-                                                <a className={`nav-link ${styles.navLink} text-lowercase`}>
+                                                <a className={`nav-link ${styles.navLink} text-`}>
                                                     <i className={`${element.icon} fa-fw`}></i>{(isMobile || element.title) && " "} {(isMobile || element.title) && element.name}
                                                 </a>
                                             )
@@ -80,7 +80,7 @@ export const Nav: React.FC = () => {
                                         {
                                             element.type === 'link' && (
                                                 <Link href={element.href}>
-                                                    <a className={`nav-link ${styles.navLink} text-lowercase`}>
+                                                    <a className={`nav-link ${styles.navLink} fron`}>
                                                         <i className={`${element.icon} fa-fw`}></i> {(isMobile || element.title) && element.name}
                                                     </a>
                                                 </Link>
