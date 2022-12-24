@@ -21,7 +21,7 @@ export const Footer: React.FC<FooterProps> = ({ white, noBackground, className }
                 <div className="col-6">
                     <div className={`copyright ${styles.footerBrand} ${white ? " text-white" : ""}`}>  
                         <a href="https://www.m1ke.co" className={`${white ? "text-white" : ""} shine`}>
-                            <img src="/brand.svg" width={25} height={25} className="mt--1" />
+                            <img src="/brand.svg" width={25} height={25} />
                         </a>
                         {" "} © 2016-{new Date().getFullYear()}{" "}
                         <br />
