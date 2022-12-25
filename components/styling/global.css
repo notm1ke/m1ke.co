@@ -50,6 +50,12 @@ html {
     background-attachment: fixed !important;
 }
 
+@media (max-width:640px) {
+    .background-main {
+        background-attachment: initial !important;
+    }
+}
+
 .dev-notice-highlight {
     font-weight: 900 !important;
 }
