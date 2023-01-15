@@ -45,7 +45,7 @@ export const Footer: React.FC<FooterProps> = ({ white, noBackground, className }
                         <NavItem>
                             <NavLink
                                 className="nav-link-icon footer-icon"
-                                href='https://www.linkedin.com/mike-medved'
+                                href='https://www.linkedin.com/in/mike-medved'
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
