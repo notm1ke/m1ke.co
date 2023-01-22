@@ -28,7 +28,7 @@ const EXPERIENCE: ExperienceEntry[] = [
         image: '/images/uconn.jpg',
         positions: [
             {
-                title: 'Lead Student Systems Administrator',
+                title: 'Systems Administrator',
                 type: 'Part Time',
                 description: 'Created and maintained critical university infrastructure using JavaScript, SQL, C#. Implemented integrations with VMware vSphere, Zabbix, and Splunk for monitoring applications. Collaborated on a large scale with other university departments to deliver breaking changes effectively, as well as drafted documentation and onboarding materials for other IT staff and students.',
                 from: 'January 2022',
