@@ -28,13 +28,14 @@ export interface WorkCardProps {
     hideExtraLink?: boolean;
     sectionHeader?: boolean;
     mobile?: boolean;
+    org?: boolean;
 }
 
 export const WorkCard: React.FC<WorkCardProps> = ({
     icon, title, titleColor, containerStyle, description,
-    link, hideExtraLink, sectionHeader, mobile
+    link, hideExtraLink, sectionHeader, mobile, org
 }) => (
-    <div className={`card shadow shadow-lg--hover ${mobile ? sectionHeader ? 'mt-4' : 'mt-1' : containerStyle ?? 'mt-5'} ${cardStyles.rgCardSm}`}>
+    <div className={`card ${org ? 'bg-dark text-light' : ''} shadow shadow-lg--hover ${mobile ? sectionHeader ? 'mt-4' : 'mt-1' : containerStyle ?? 'mt-5'} ${cardStyles.rgCardSm}`}>
         <div className="card-body">
             <div className="d-flex">
                 <div>
@@ -43,7 +44,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({
                             <h5>
                                 <a
                                     href={link}
-                                    className={`${cardStyles.cardSectionTitle} ${titleColor ?? 'text-primary'} shine`}
+                                    className={`${cardStyles.cardSectionTitle} ${titleColor ?? org ? 'text-warning' : 'text-primary'} shine`}
                                     target="_blank"
                                     rel="noopener noreferrer">
                                         {icon ?? ''}{title}
@@ -71,7 +72,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({
                                     href={link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="btn btn-dark btn-sm text-lowercase shine">
+                                    className={`btn ${org ? 'btn-warning' : 'btn-dark'} btn-sm text-lowercase shine`}>
                                         <i className={`${getIconForLink(link)} fa-fw`}></i> {repositoryKeywords(link)}
                                 </a>
                             </div>

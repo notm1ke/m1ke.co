@@ -51,7 +51,8 @@ const PROJECTS: EnumerableProject[] = [
         containerStyle: styles.rowCardTopSpacing,
         icon: <MdiIcon path={mdiDogSide} size="21px" className={`${styles.workCardIcon} fa-fw`} />,
         link: 'https://www.ilefa.club',
-        hideExtraLink: true
+        hideExtraLink: true,
+        org: true
     },
     {
         key: 'snapshots',
@@ -100,7 +101,8 @@ const PROJECTS: EnumerableProject[] = [
         description: 'Warp is an organization focused on creating innovative software.',
         containerStyle: styles.rowCardTopSpacingSecond,
         icon: <MdiIcon path={mdiFeather} size="21px" className={`${styles.workCardIcon} fa-fw`} />,
-        link: 'https://bywarp.co'
+        link: 'https://bywarp.co',
+        org: true
     },
     {
         key: 'lightkit4j',
@@ -133,6 +135,7 @@ const PROJECTS: EnumerableProject[] = [
         containerStyle: styles.rowCardTopSpacingSecond,
         icon: <MdiIcon path={mdiGhost} size="21px" className={`${styles.workCardIcon} fa-fw`} />,
         link: 'https://m1ke.co',
+        org: true
     },
     {
         key: 'srvmon',
@@ -262,8 +265,9 @@ const HomePage = () => {
                                 <div className="row align-items-center justify-content-center">
                                     <div className="col-lg-6 text-center">
                                         <img src="/logo.svg" width={200} height={200} />
-                                        <h2 className={`${styles.tagline} display-4 font-weight-normal text-white cursor`}>
-                                            <b>CS @ UConn</b> — Full Stack Software Engineer
+                                        <h2 className={`${styles.tagline} display-4 font-weight-normal text-white`}>
+                                            <b>SWE @ Walmart, CS @ UConn</b>
+                                            <br />Full Stack Software Engineer
                                         </h2>
                                         <div className="btn-wrapper mt-4">
                                             <a href="https://www.github.com/notm1ke" className="btn btn-dark bg-ilefa-dark btn-icon mt-3 mb-sm-0 shine text-lowercase">
@@ -285,7 +289,8 @@ const HomePage = () => {
                         <h4 className={`text-white ${styles.workTitle}`}>
                             <i className="fas fa-person-circle-question fa-fw"></i> A little bit about me
                             <br /><span className={`text-white ${styles.workTagline}`}>
-                                Hey there! My name is Mike, and I am currently a Junior Computer Science major (and Information Assurance + Math minor) at UConn. I have interests in Web Development (full stack), Security, Cloud Systems, and Distributed Systems. While pursuing my degree, I am also working for UConn as a Software Engineer / Systems Administrator.
+                                Hey there! My name is Mike, and I am currently a SWE Intern at Walmart, and senior CS major at UConn. I have interests in Web Development (full stack), Security, Cloud Systems, and Distributed Systems. I also wrote a cool web app called{" "}
+                                <a href="https://cobalt.lol" className="text-secondary shine font-weight-500" rel="noopener noreferrer" target="_blank">Cobalt</a>!
                             </span>
                         </h4>
 
