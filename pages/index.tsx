@@ -14,6 +14,7 @@ import {
 } from '../components';
 
 import {
+    mdiAccessPointNetwork,
     mdiAccountMultiple,
     mdiBadgeAccountHorizontal,
     mdiCalendar,
@@ -31,6 +32,7 @@ import {
     mdiLightbulbOn,
     mdiLogin,
     mdiPail,
+    mdiPaperRoll,
     mdiPokeball,
     mdiRemoteDesktop,
     mdiRss,
@@ -80,10 +82,18 @@ const PROJECTS: EnumerableProject[] = [
         link: 'https://github.com/ilefa/ivy',
     },
     {
+        key: 'tendies',
+        title: 'Tendies',
+        description: 'A paper trading bot built on-top of the Ivy framework - used as an example application.',
+        containerStyle: 'ml--3 mr--1 mt-2',
+        icon: <MdiIcon path={mdiPaperRoll} size="21px" className={`${styles.workCardIcon} fa-fw`} />,
+        link: 'https://github.com/ilefa/tendies',
+    },
+    {
         key: 'adtools',
         title: 'adtools',
         description: 'A promise safe on-premises ActiveDirectory TypeScript toolkit for domain applications.',
-        containerStyle: 'ml--3 mr--1 mt-2',
+        containerStyle: 'mr--1 mt-2',
         icon: <MdiIcon path={mdiBadgeAccountHorizontal} size="21px" className={`${styles.workCardIcon} fa-fw`} />,
         link: 'https://github.com/ilefa/adtools'
     },
@@ -91,7 +101,7 @@ const PROJECTS: EnumerableProject[] = [
         key: 'passport-uconn',
         title: 'UConn SSO Strategy',
         description: 'A Passport.js authentication strategy allowing integrations with UConn SSO.',
-        containerStyle: 'mr--1 mt-2',
+        containerStyle: 'ml--3 mr--1 mt-2',
         icon: <MdiIcon path={mdiLogin} size="21px" className={`${styles.workCardIcon} fa-fw mr-2`} />,
         link: 'https://github.com/ilefa/passport-uconn',
     },
@@ -200,7 +210,16 @@ const PROJECTS: EnumerableProject[] = [
         containerStyle: 'ml--3 mr--1 mt-2',
         icon: <MdiIcon path={mdiChessRook} size="21px" className={`${styles.workCardIcon} fa-fw`} />,
         link: 'https://github.com/notm1ke/royale',
+    },    
+    {
+        key: 'fping',
+        title: 'fping',
+        description: 'TypeScript wrapper for the macOS/Linux fping CLI.',
+        containerStyle: 'mr--1 mt-2',
+        icon: <MdiIcon path={mdiAccessPointNetwork} size="21px" className={`${styles.workCardIcon} fa-fw`} />,
+        link: 'https://github.com/notm1ke/fping',
     },
+
 ]
 
 interface CobaltCardProps {
@@ -220,7 +239,7 @@ const CobaltCard: React.FC<CobaltCardProps> = ({ desktop }) => (
         tracking={
             <div className="mt-3">
                 <p>
-                    Currently tracking <b>8,045 courses</b>, <b>4,019 professors</b>, <b>323 classrooms</b>, and more across all of UConn's campuses.
+                    Currently tracking <b>8,399 courses</b>, <b>4,019 professors</b>, <b>330 classrooms</b>, and more across all of UConn's campuses.
                 </p>
             </div>
         }
@@ -229,17 +248,17 @@ const CobaltCard: React.FC<CobaltCardProps> = ({ desktop }) => (
         attributes={[
             {
                 name: 'Unique Visitors',
-                value: '30K+',
+                value: '50K+',
                 icon: <MdiIcon path={mdiAccountMultiple} size="17px" className="fa-fw vaTextTop" />
             },
             {
                 name: 'Monthly Views',
-                value: '80K+',
+                value: '90K+',
                 icon: <MdiIcon path={mdiCalendar} size="17px" className="fa-fw vaTextTop" />
             },
             {
                 name: 'Lifetime Views',
-                value: '1M+',
+                value: '2M+',
                 icon: <MdiIcon path={mdiChartTimelineVariant} size="17px" className="fa-fw vaTextTop" />
             }
         ]}
@@ -326,7 +345,7 @@ const HomePage = () => {
                             </div>
 
                             {
-                                PROJECTS.slice(2, 6).map(project => (
+                                PROJECTS.slice(2, 7).map(project => (
                                     <div className="col-md-4" key={project.key}>
                                         <WorkCard {...project} mobile={!desktop} />
                                     </div>
@@ -337,11 +356,11 @@ const HomePage = () => {
                         {/* warp projects */}
                         <div className="row">
                             <div className="col-md-4 align-items-stretch">
-                                <WorkCard {...PROJECTS[6]} sectionHeader mobile={!desktop} />
+                                <WorkCard {...PROJECTS[7]} sectionHeader mobile={!desktop} />
                             </div>
 
                             {
-                                PROJECTS.slice(7, 10).map(project => (
+                                PROJECTS.slice(8, 11).map(project => (
                                     <div className="col-md-4 align-items-stretch" key={project.key}>
                                         <WorkCard {...project} mobile={!desktop} />
                                     </div>
@@ -352,11 +371,11 @@ const HomePage = () => {
                         {/* personal/uconn projects */}
                         <div className="row">
                             <div className="col-md-4 align-items-stretch">
-                                <WorkCard {...PROJECTS[10]} sectionHeader mobile={!desktop} />
+                                <WorkCard {...PROJECTS[11]} sectionHeader mobile={!desktop} />
                             </div>
 
                             {
-                                PROJECTS.slice(11, 20).map(project => (
+                                PROJECTS.slice(12, 21).map(project => (
                                     <div className="col-md-4 align-items-stretch" key={project.key}>
                                         <WorkCard {...project} mobile={!desktop} />
                                     </div>
