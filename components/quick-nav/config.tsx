@@ -6,12 +6,12 @@ export const QuickNavConfig: Array<QuickNavContents> = [
 		title: 'Work Experience',
 	},
 	{
-		id: 'education',
-		title: 'Education',
-	},
-	{
 		id: 'projects',
 		title: 'Personal Projects',
+	},
+	{
+		id: 'education',
+		title: 'Education',
 	},
 	{
 		id: 'honors',

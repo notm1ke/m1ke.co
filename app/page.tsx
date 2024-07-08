@@ -1,10 +1,7 @@
-import { QuickNav } from "~/components/quick-nav";
 import { css, MdiIcon, SocialConfig } from "~/util";
 import { ExperienceSection } from "~/components/work";
-import { ScrollArea } from "~/components/ui/scroll-area";
 import { ProjectOrgSection } from "~/components/project";
 import { EducationSection } from "~/components/education";
-import { QuickNavConfig } from "~/components/quick-nav/config";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 
 import {
@@ -103,19 +100,6 @@ export default function Home() {
 							</div >
 						</section>
 						<section className="flex max-w-[1028px] flex-col py-8">
-							<div id="education" className="flex flex-col gap-10 w-full">
-								<h2 className="text-2xl font-bold font-mono">
-									<MdiIcon
-										path={mdiSchool}
-										className="inline-block"
-										size="32px"
-									/>{" "}
-									Education
-								</h2>
-								<EducationSection />
-							</div >
-						</section >
-						<section className="flex max-w-[1028px] flex-col py-8">
 							<div id="projects" className="flex flex-col gap-10 w-full">
 								<h2 className="text-2xl font-bold font-mono">
 									<MdiIcon
@@ -126,6 +110,19 @@ export default function Home() {
 									Personal Projects
 								</h2>
 								<ProjectOrgSection org="me" />
+							</div>
+						</section>
+						<section className="flex max-w-[1028px] flex-col py-8">
+							<div id="education" className="flex flex-col gap-10 w-full">
+								<h2 className="text-2xl font-bold font-mono">
+									<MdiIcon
+										path={mdiSchool}
+										className="inline-block"
+										size="32px"
+									/>{" "}
+									Education
+								</h2>
+								<EducationSection />
 							</div>
 						</section>
 						<section className="flex max-w-[1028px] flex-col py-8">

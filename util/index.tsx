@@ -44,3 +44,19 @@ export const timeRange = (input: TimeRangeLike) => {
    if (current) return `Since ${start}`;
    return `${start} — ${end}`;
 }
+
+export type GroupedBy<T> = {
+    [key: string]: T[];
+}
+
+/**
+ * Groups elements by a given key.
+ * 
+ * @param xs the elements to group
+ * @param key the key to group them by
+ */
+export const groupBy = <T,>(xs: T[], key: keyof T): GroupedBy<T> => xs.reduce((rv, x) => {
+    let rvKey = x[key as keyof T] as string;
+    (rv[rvKey] = rv[rvKey] || []).push(x);
+    return rv;
+}, {} as Record<string, T[]>);

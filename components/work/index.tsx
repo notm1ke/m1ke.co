@@ -1,19 +1,13 @@
-import { MdiIcon } from "~/util";
+import { MdiIcon, timeRange } from "~/util";
 import { mdiMapMarkerRadius } from "@mdi/js";
 import { ProjectOrgSection } from "../project";
+import { ExperienceEntry, WorkExperience } from "./data";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { ExperienceEntry, ExperiencePosition, WorkExperience } from "./data";
 
 export const ExperienceSection = () =>
 	WorkExperience.map((experience, i) => (
 		<CompanySection key={i} entry={experience} />
 	));
-
-const workedSince = (position: ExperiencePosition) => {
-   let { start, end, current } = position;
-   if (current) return `Since ${start}`;
-   return `${start} — ${end}`;
-}
 
 const CompanySection: React.FC<{ entry: ExperienceEntry }> = ({ entry }) => (
 	<div className="max-w-[1028px] flex-col">
@@ -51,7 +45,7 @@ const CompanySection: React.FC<{ entry: ExperienceEntry }> = ({ entry }) => (
 							{position.title}
 						</span>
 						<span className="text-base text-gray-300/60 ml-3 font-mono">
-							({workedSince(position)})
+							({timeRange(position)})
 						</span>
 					</div>
 	
