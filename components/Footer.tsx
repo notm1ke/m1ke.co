@@ -1,70 +1,41 @@
-import styles from './styling/footer.module.css';
+import { buttonVariants } from "./ui/button";
+import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 
-import {
-    Container,
-    Nav,
-    NavItem,
-    NavLink,
-    Row,
-} from 'reactstrap';
-
-export interface FooterProps {
-    white?: boolean;
-    noBackground?: boolean;
-    className?: string;
-}
-
-export const Footer: React.FC<FooterProps> = ({ white, noBackground, className }) => (
-    <footer className={`footer ${className ?? ''} ${white ? noBackground ? '' : ' ' : ''}`}>
-        <Container className="container-lg">
-            <Row className="align-items-center justify-content-md-between">
-                <div className="col-6">
-                    <div className={`copyright ${styles.footerBrand} ${white ? " text-white" : ""}`}>  
-                        <a href="https://www.m1ke.co" className={`${white ? "text-white" : ""} shine`}>
-                            <img src="/brand.svg" width={25} height={25} />
-                        </a>
-                        {" "} © 2016-{new Date().getFullYear()}{" "}
-                        <br />
-                        <small className="text-muted">
-                            All rights reserved.
-                        </small>
-                    </div>
-                </div>
-                <div className="col-6">
-                    <Nav className="nav-footer justify-content-end">
-                        <NavItem>
-                            <NavLink
-                                className="nav-link-icon footer-icon"
-                                href='https://www.github.com/notm1ke'
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <i className={"fab fa-github fa-fw" + (white ? " text-white" : "")} />
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink
-                                className="nav-link-icon footer-icon"
-                                href='https://www.linkedin.com/in/mike-medved'
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <i className={"fab fa-linkedin fa-fw" + (white ? " text-white" : "")} />
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink
-                                className="nav-link-icon footer-icon"
-                                href='mailto:me@m1ke.co'
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <i className={"fas fa-envelope-open-text fa-fw" + (white ? " text-white" : "")} />
-                            </NavLink>
-                        </NavItem>
-                    </Nav>
-                </div>
-            </Row>
-        </Container>
-    </footer>
+export const Footer: React.FC = () => (
+	<footer className="md:px-8 py-6 bg-brand-gradient">
+		<div className="container flex-col items-center justify-between gap-4 m:6-24 md:flex-row md:flex hidden">
+			<div className="font-mono text-center text-muted-background md:text-left">
+				<a
+					href="https://www.m1ke.co"
+					className="font-bold text-white hover:text-white/60"
+				>
+					<img className="inline" src="/brand.svg" width={25} height={25} loading="lazy" />
+				</a>{" "}
+				&copy; 2016-{new Date().getFullYear()}
+				<br />
+				<span className="text-gray-300/70 text-sm">
+					All rights reserved.
+				</span>
+				<br />
+			</div>
+			<div className="flex gap-4">
+				<a
+					href="https://github.com/notm1ke"
+					rel="noopener noreferrer"
+					target="_blank"
+					className={buttonVariants({ variant: "purpleGhost" })}
+				>
+					<GitHubLogoIcon className="h-6 w-6" />
+				</a>
+				<a
+					href="https://linkedin.com/in/mike-medved"
+					rel="noopener noreferrer"
+					target="_blank"
+					className={buttonVariants({ variant: "purpleGhost" })}
+				>
+					<LinkedInLogoIcon className="h-6 w-6" />
+				</a>
+			</div>
+		</div>
+	</footer>
 );

@@ -1,98 +1,136 @@
-import React from 'react';
-import Link from 'next/link';
-import styles from './styling/nav.module.css';
+import { useState } from "react";
+import { Button } from "./ui/button";
+import { MdiIcon, css } from "~/util";
+import Link, { LinkProps } from "next/link";
+import { useRouter } from "next/navigation";
+import { ScrollArea } from "./ui/scroll-area";
+import { mdiHeart, mdiMenu, mdiReact } from "@mdi/js";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
-import { useState } from 'react';
-import { isMobile } from 'react-device-detect';
-import { Navbar, UncontrolledCollapse } from 'reactstrap';
+export type RouteSection = {
+	title: string;
+	routes: Route[];
+};
 
-export const Nav: React.FC = () => {
-    const [classes, setClasses] = useState('');
-    const onExiting = () => setClasses('collapsing-out');
-    const onExited = () => setClasses('');
+export type Route = {
+	name: string;
+	key: string;
+	path: string;
+};
 
-    const elements = [
-        {
-            icon: 'fa fa-home',
-            href: '/',
-            name: 'Home',
-            key: 'home',
-            type: 'link',
-            title: true
-        },
-        {
-            icon: 'fa fa-layer-group',
-            href: '/#projects',
-            name: 'Projects',
-            key: 'projects',
-            type: 'link',
-            title: true
-        }
-    ];
+const Routes: Array<RouteSection> = [
+	{
+		title: "<todo>",
+		routes: [
+			{
+				name: "<todo>",
+				key: "<todo>",
+				path: "<todo>",
+			},
+		],
+	},
+];
 
-    return (
-        <header className="header-global">
-            <Navbar className="navbar-main navbar-transparent navbar-light mt-2" expand="lg">
-                <div className="container">
-                    <Link href="/">
-                        <a className={`mr-lg-1 navbar-brand ${styles.navBrandText}`}>
-                            Mike Medved
-                        </a>
-                    </Link>
-                    <button className="navbar-toggler" id="navbar_global">
-                        <span className="navbar-toggler-icon" />
-                    </button>
-                    <UncontrolledCollapse
-                        toggler="#navbar_global"
-                        navbar
-                        className={classes}
-                        onExiting={onExiting}
-                        onExited={onExited}
-                    >
-                        <div className="navbar-collapse-header">
-                            <div className="row">
-                                <div className="col-6 collapse-brand">
-                                    <Link href="/">
-                                    <a className={`navbar-collapse-title text-primary ${styles.navBrandMobileText}`}>
-                                        Mike Medved
-                                    </a>
-                                    </Link>
-                                </div>
-                                <div className="col-6 collapse-close">
-                                    <button className={`navbar-toggler ${styles.navBrandMobileCloser}`} id="navbar_global">
-                                        <span></span>
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <ul className="navbar-nav align-items-lg-center ml-lg-auto">
-                            {
-                                elements.map(element => 
-                                    <li className="nav-item" key={element.key}>
-                                        {
-                                            element.type === 'action' && (
-                                                <a className={`nav-link ${styles.navLink} text-`}>
-                                                    <i className={`${element.icon} fa-fw`}></i>{(isMobile || element.title) && " "} {(isMobile || element.title) && element.name}
-                                                </a>
-                                            )
-                                        }
-                                        {
-                                            element.type === 'link' && (
-                                                <Link href={element.href}>
-                                                    <a className={`nav-link ${styles.navLink} fron`}>
-                                                        <i className={`${element.icon} fa-fw`}></i> {(isMobile || element.title) && element.name}
-                                                    </a>
-                                                </Link>
-                                            )
-                                        }
-                                    </li>
-                                )
-                            }
-                        </ul>
-                    </UncontrolledCollapse>
-                </div>
-            </Navbar>
-        </header>
-    );
+interface MobileLinkProps extends LinkProps {
+	onOpenChange?: (open: boolean) => void;
+	children: React.ReactNode;
+	className?: string;
 }
+
+function MobileLink({
+	href,
+	onOpenChange,
+	className,
+	children,
+	...props
+}: MobileLinkProps) {
+	const router = useRouter();
+	return (
+		<Link
+			href={href}
+			onClick={() => {
+				router.push(href.toString());
+				onOpenChange?.(false);
+			}}
+			className={css(className)}
+			{...props}
+		>
+			{children}
+		</Link>
+	);
+}
+
+export const Navigation: React.FC = () => {
+	const [open, setOpen] = useState(false);
+
+	return (
+		<Sheet open={open} onOpenChange={setOpen}>
+			<SheetTrigger asChild>
+				<Button
+					variant="ghost"
+					className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+				>
+					<MdiIcon path={mdiMenu} size="24px" className="inline" />
+					<span className="sr-only">Toggle Menu</span>
+				</Button>
+			</SheetTrigger>
+			<SheetContent side="left" className="pr-0">
+				<MobileLink
+					href="/"
+					className="flex items-center"
+					onOpenChange={setOpen}
+				>
+					{/* <MdiIcon path={SITE_LOGO} size={1} className="h-7 w-7 mr-2" /> */}
+					<span className="font-extrabold font-mono">Cobalt</span>
+				</MobileLink>
+				<ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
+					<div className="flex flex-col space-y-3">
+						{
+							Routes.map(({ title, routes }, i) => (
+								<div key={i} className="flex flex-col space-y-3 pt-6">
+									<h4 className="font-medium">{title}</h4>
+									{routes.map(({ name, key, path }) => (
+										<MobileLink
+											className="text-muted-foreground"
+											key={key}
+											href={path}
+											onOpenChange={setOpen}
+										>
+											{name}
+										</MobileLink>
+									))}
+								</div>
+							))
+						}
+					</div>
+					<div className="flex flex-col pt-9 space-y-2 text-sm">
+						<span className="font-bold font-mono text-transparent bg-clip-text bg-gradient-to-br from-indigo-200 from-15% via-blue-400 via-50% to-purple-400 to-90%">
+							<a href="https://www.m1ke.co">
+                        <img src="/brand.svg" width={25} height={25} loading="lazy" />
+                     </a>
+							<span className="text-gray-300 font-medium">
+								&copy; 2016-{new Date().getFullYear()}
+							</span>
+						</span>
+
+						<span className="text-muted-foreground text-sm">
+							Made with{" "}
+							<MdiIcon
+								path={mdiHeart}
+								size="13px"
+								className="inline text-red-400"
+							/>{" "}
+							and lots of{" "}
+							<MdiIcon
+								path={mdiReact}
+								size="13px"
+								className="inline text-blue-500"
+							/>
+							.
+						</span>
+					</div>
+				</ScrollArea>
+			</SheetContent>
+		</Sheet>
+	);
+};
