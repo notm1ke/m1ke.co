@@ -29,7 +29,7 @@ export const ProjectOrgSection: React.FC<{ org: string }> = ({ org }) => {
 	if (!projects) return null;
 
 	return (
-		<div className="max-w-sm mx-auto grid gap-6 lg:grid-cols-3 items-start lg:max-w-none group">
+		<div className="mx-auto grid gap-6 lg:grid-cols-3 items-start lg:max-w-none group">
 			{
 				projects.map((project) => (
 					<ResponsiveModal
@@ -54,7 +54,7 @@ export const ProjectOrgSection: React.FC<{ org: string }> = ({ org }) => {
 						description={project.description}
 						trigger={<ProjectCard key={project.title} project={project} />}
 					>
-						<div className="flex space-x-4 text-sm text-muted-foreground">
+						<div className="space-x-4 text-sm text-muted-foreground hidden md:flex">
 							<div className="flex items-center">
 								{langIndicator(project)}
 							</div>

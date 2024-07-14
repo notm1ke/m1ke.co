@@ -1,3 +1,4 @@
+import { AwardSection } from "~/components/award";
 import { css, MdiIcon, SocialConfig } from "~/util";
 import { ExperienceSection } from "~/components/work";
 import { ProjectOrgSection } from "~/components/project";
@@ -11,7 +12,6 @@ import {
 	mdiSchool,
 	mdiSourceRepository,
 } from "@mdi/js";
-import { AwardSection } from "~/components/award";
 
 export default function Home() {
 	return (
@@ -26,7 +26,7 @@ export default function Home() {
 							</Avatar>
 						</div>
 						<div className="md:w-3/4 sm:w-full">
-							<p className="max-w-[500px] font-mono mt-5 tracking-tighter text-xl">
+							<p className="max-w-[500px] font-mono mt-5 tracking-tighter md:text-xl">
 								<span className="text-2xl text-purple-500 font-extrabold font-mono tracking-tighter">
 									Mike Medved
 								</span>
@@ -83,12 +83,12 @@ export default function Home() {
 						</div>
 					</div>
 				</section>
-				<hr className="py-3" />
+				<hr className="py-3 hidden md:visible" />
 				<div className="flex flex-col w-full md:flex-row">
 					<div className="md:w-3/4 sm:w-full">
 						<section className="flex max-w-[1028px] flex-col py-8">
 							<div id="experience" className="flex flex-col gap-10 w-full">
-								<h2 className="text-2xl font-bold font-mono">
+								<h2 className="text-xl md:text-2xl font-bold font-mono">
 									<MdiIcon
 										path={mdiBriefcaseVariant}
 										className="inline-block"
@@ -101,7 +101,7 @@ export default function Home() {
 						</section>
 						<section className="flex max-w-[1028px] flex-col py-8">
 							<div id="projects" className="flex flex-col gap-10 w-full">
-								<h2 className="text-2xl font-bold font-mono">
+								<h2 className="text-xl md:text-2xl font-bold font-mono">
 									<MdiIcon
 										path={mdiSourceRepository}
 										className="inline-block"
@@ -114,7 +114,7 @@ export default function Home() {
 						</section>
 						<section className="flex max-w-[1028px] flex-col py-8">
 							<div id="education" className="flex flex-col gap-10 w-full">
-								<h2 className="text-2xl font-bold font-mono">
+								<h2 className="text-xl md:text-2xl font-bold font-mono">
 									<MdiIcon
 										path={mdiSchool}
 										className="inline-block"
@@ -127,7 +127,7 @@ export default function Home() {
 						</section>
 						<section className="flex max-w-[1028px] flex-col py-8">
 							<div id="honors" className="flex flex-col gap-10 w-full">
-								<h2 className="text-2xl font-bold font-mono">
+								<h2 className="text-xl md:text-2xl font-bold font-mono">
 									<MdiIcon
 										path={mdiMedal}
 										className="inline-block"

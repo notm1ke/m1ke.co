@@ -7,6 +7,7 @@ import {
 	DrawerContent,
 	DrawerDescription,
 	DrawerHeader,
+    DrawerTrigger,
 } from "./drawer";
 
 import {
@@ -45,6 +46,7 @@ export const ResponsiveModal: React.FC<ResponsiveModalProps> = ({
 
 	return (
 		<Drawer open={open} onOpenChange={setOpen}>
+			<DrawerTrigger asChild>{trigger}</DrawerTrigger>
 			<DrawerContent>
 				<DrawerHeader>
 					{title}
