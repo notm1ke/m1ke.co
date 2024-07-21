@@ -1,5 +1,6 @@
 export type ExperienceEntry = {
 	company: string;
+   mobile?: string;
 	orgKey?: string;
 	href?: string;
 	color: string;
@@ -48,6 +49,7 @@ export const WorkExperience: ExperienceEntry[] = [
 	},
 	{
 		company: "University of Connecticut",
+		mobile: "UConn",
 		orgKey: "uconn",
 		href: "https://its.uconn.edu",
 		color: "blue-800",

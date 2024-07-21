@@ -12,11 +12,14 @@ import {
 	mdiSchool,
 	mdiSourceRepository,
 } from "@mdi/js";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { QuickNav } from "~/components/quick-nav";
+import { QuickNavConfig } from "~/components/quick-nav/config";
 
 export default function Home() {
 	return (
 		<>
-			<div className="container relative">
+			<div className="container">
 				<section className="flex max-w-[1028px] flex-col mt-7 md:py-12 lg:pt-24 lg:pb-12">
 					<div className="flex flex-col w-full md:flex-row">
 						<div className="md:w-1/4 sm:w-full space-y-3">
@@ -139,19 +142,19 @@ export default function Home() {
 							</div>
 						</section>
 					</div>
-				</div>
-			</div>
-			{/* <div className="md:w-1/4 sm:w-full space-y-3">
-				<div className="hidden text-sm xl:block">
-					<div className="sticky top-16 pt-4">
-						<ScrollArea className="pb-10">
-							<div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12 ml-3">
-								<QuickNav elements={QuickNavConfig} />
+					<div className="md:w-1/4 sm:w-full space-y-3">
+						<div className="hidden sticky text-sm xl:block">
+							<div className="sttop-16 pt-4">
+								<ScrollArea className="pb-10">
+									<div className="top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12 ml-3">
+										<QuickNav elements={QuickNavConfig} />
+									</div>
+								</ScrollArea>
 							</div>
-						</ScrollArea>
+						</div>
 					</div>
 				</div>
-			</div> */}
+			</div>
 		</>
 	);
 }

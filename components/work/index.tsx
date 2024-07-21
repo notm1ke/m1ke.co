@@ -21,7 +21,7 @@ const CompanySection: React.FC<{ entry: ExperienceEntry }> = ({ entry }) => (
 			<div className="flex-1 ml-4 space-y-1">
 				{
 					entry.href && (
-						<a href={entry.href} className="text-lg font-mono font-semibold border-b-[2px] pb-2 shine">
+						<a href={entry.href} className="text-[1.115rem] font-mono font-semibold border-b-[2px] pb-2 shine">
 							{entry.company}
 						</a>
 					)

@@ -17,7 +17,7 @@ const InstitutionSection: React.FC<{ entry: EducationEntry }> = ({ entry }) => (
 				</AvatarFallback>
 			</Avatar>
 			<div className="flex-1 ml-4 space-y-1">
-				<span className={`text-lg font-mono font-semibold border-b-[2px] pb-2`}>
+				<span className={`text-[1.115rem] font-mono font-semibold border-b-[2px] pb-2`}>
 					{entry.institution}
 				</span>
 			</div>
