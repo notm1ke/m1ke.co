@@ -245,7 +245,7 @@ const uconnProjects: Project[] = [
 		title: 'Bulk Computer Resolver',
 		visibility: 'internal',
 		brief: 'Built out a tool to resolve computer names to IP addresses in bulk.',
-		description: 'Built out a tool to resolve computer names to IP addresses in bulk. This tool is integrates with Infoblox to bulk resolve classroom computers in the AV DNS zone.'
+		description: 'Built out a tool to resolve computer names to IP addresses in bulk. This tool integrates with Infoblox to bulk resolve classroom computers in the AV DNS zone.'
 	},
 	{
 		type: 'app',
