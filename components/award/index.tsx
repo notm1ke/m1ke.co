@@ -15,14 +15,18 @@ const AwardAuthoritySection: React.FC<{ authority: AwardAuthority }> = ({ author
    return (
 	   <div className="max-w-[1028px] flex-col">
 			<div className="flex">
-				<Avatar className={`w-9 h-9 border-2`}>
-					<AvatarImage src={authority.image} alt={authority.name[0]} />
+				<Avatar className="w-9 h-9 border-2">
+					<AvatarImage
+						src={authority.image}
+						alt={authority.name[0]}
+						style={{ filter: `sepia(100%) saturate(175%) brightness(80%) hue-rotate(212deg)` }}
+					/>
 					<AvatarFallback>
 						{authority.name.slice(0, 2).toUpperCase()}
 					</AvatarFallback>
 				</Avatar>
 				<div className="flex-1 ml-4 space-y-1">
-					<a href={authority.href} className="text-lg font-mono font-semibold border-b-[2px] pb-2 shine">
+					<a href={authority.href} className="text-lg font-mono text-purple-300 font-semibold align-text-top shine">
 						{authority.name}
 					</a>
 				</div>
@@ -48,7 +52,7 @@ const AwardEntry: React.FC<{ award: Award }> = ({ award }) => (
 			</span>
 		</div>
 
-		<div className="text-[0.95rem] mt-1 text-gray-400 font-mono">
+		<div className="text-[0.95rem] mt-1 text-gray-300 font-mono">
 			<MdiIcon path={mdiMedal} className="w-4 h-4 inline-block mr-2" />
 			<span className="align-text-top">
 				Credential ID:{" "}

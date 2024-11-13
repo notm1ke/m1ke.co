@@ -1,9 +1,13 @@
 import { AwardSection } from "~/components/award";
+import { QuickNav } from "~/components/quick-nav";
 import { css, MdiIcon, SocialConfig } from "~/util";
+import { Separator } from "~/components/ui/separator";
 import { ExperienceSection } from "~/components/work";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { ProjectOrgSection } from "~/components/project";
 import { EducationSection } from "~/components/education";
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
+import { AnimatedRevealAvatar } from "~/components/avatar";
+import { QuickNavConfig } from "~/components/quick-nav/config";
 
 import {
 	mdiBriefcaseVariant,
@@ -12,21 +16,15 @@ import {
 	mdiSchool,
 	mdiSourceRepository,
 } from "@mdi/js";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { QuickNav } from "~/components/quick-nav";
-import { QuickNavConfig } from "~/components/quick-nav/config";
 
 export default function Home() {
 	return (
 		<>
 			<div className="container">
-				<section className="flex max-w-[1028px] flex-col mt-7 md:py-12 lg:pt-24 lg:pb-12">
+				<section className="flex max-w-[1028px] flex-col md:mt-7 md:py-12 lg:pt-24 lg:pb-12">
 					<div className="flex flex-col w-full md:flex-row">
 						<div className="md:w-1/4 sm:w-full space-y-3">
-							<Avatar className="w-[11.75rem] h-[11.75rem] border-2 border-purple-600 [background:linear-gradient(45deg,#172033,theme(colors.slate.800)_50%,#172033)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.slate.600/.48)_80%,_theme(colors.indigo.500)_86%,_theme(colors.indigo.300)_90%,_theme(colors.indigo.500)_94%,_theme(colors.slate.600/.48))_border-box] rounded-2xl border-transparent animate-border">
-								<AvatarImage src="/me.png" alt="Mike Medved" />
-								<AvatarFallback>MM</AvatarFallback>
-							</Avatar>
+							<AnimatedRevealAvatar src="/me.png" />
 						</div>
 						<div className="md:w-3/4 sm:w-full">
 							<p className="max-w-[500px] font-mono mt-5 tracking-tighter md:text-xl">
@@ -72,7 +70,7 @@ export default function Home() {
 														>
 															<MdiIcon
 																path={icon}
-																className="inline-block text-purple-300"
+																className="inline-block text-purple-300 align-sub"
 																size={1}
 															/>
 														</a>
@@ -86,7 +84,7 @@ export default function Home() {
 						</div>
 					</div>
 				</section>
-				<hr className="py-3 hidden md:visible" />
+				<Separator className="mt-5 md:hidden" />
 				<div className="flex flex-col w-full md:flex-row">
 					<div className="md:w-3/4 sm:w-full">
 						<section className="flex max-w-[1028px] flex-col py-8">
@@ -102,6 +100,7 @@ export default function Home() {
 								<ExperienceSection />
 							</div >
 						</section>
+						<Separator className="mb-2 md:hidden" />
 						<section className="flex max-w-[1028px] flex-col py-8">
 							<div id="projects" className="flex flex-col gap-10 w-full">
 								<h2 className="text-xl md:text-2xl font-bold font-mono">
@@ -115,6 +114,7 @@ export default function Home() {
 								<ProjectOrgSection org="me" />
 							</div>
 						</section>
+						<Separator className="mb-2 md:hidden" />
 						<section className="flex max-w-[1028px] flex-col py-8">
 							<div id="education" className="flex flex-col gap-10 w-full">
 								<h2 className="text-xl md:text-2xl font-bold font-mono">
@@ -128,6 +128,7 @@ export default function Home() {
 								<EducationSection />
 							</div>
 						</section>
+						<Separator className="mb-2 md:hidden" />
 						<section className="flex max-w-[1028px] flex-col py-8">
 							<div id="honors" className="flex flex-col gap-10 w-full">
 								<h2 className="text-xl md:text-2xl font-bold font-mono">

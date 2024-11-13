@@ -3,7 +3,6 @@ export type ExperienceEntry = {
    mobile?: string;
 	orgKey?: string;
 	href?: string;
-	color: string;
 	image: string;
 	positions: ExperiencePosition[];
 };
@@ -26,7 +25,6 @@ export const WorkExperience: ExperienceEntry[] = [
 		company: "Walmart Global Tech",
 		orgKey: "wmt",
 		href: "https://tech.walmart.com",
-		color: "green-400",
 		image: "/logos/wgt.jpeg",
 		positions: [
 			{
@@ -52,7 +50,6 @@ export const WorkExperience: ExperienceEntry[] = [
 		mobile: "UConn",
 		orgKey: "uconn",
 		href: "https://its.uconn.edu",
-		color: "blue-800",
 		image: "/logos/uconn.jpeg",
 		positions: [
 			{
@@ -77,7 +74,6 @@ export const WorkExperience: ExperienceEntry[] = [
 		company: "ILEFA Labs",
 		orgKey: "ilefa",
 		href: "https://ilefa.club",
-		color: "blue-800",
 		image: "/logos/ilefa.png",
 		positions: [
 			{
@@ -94,7 +90,6 @@ export const WorkExperience: ExperienceEntry[] = [
 		company: "Warp Studios",
 		orgKey: "warp",
 		href: "https://wrp.sh",
-		color: "blue-800",
 		image: "/logos/warp.png",
 		positions: [
 			{
@@ -109,7 +104,6 @@ export const WorkExperience: ExperienceEntry[] = [
 	{
 		company: "EyesUp, Inc.",
 		orgKey: "eyesup",
-		color: "blue-500",
 		image: "/logos/rosc.png",
 		positions: [
 			{

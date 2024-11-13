@@ -85,6 +85,12 @@ const langIndicator = ({ lang }: Project) => {
 		</>
 	)
 	
+	if (lang === 'js') return (
+		<>
+			<CircleIcon className="mr-1 h-3 w-3 fill-yellow-300 text-yellow-300" /> JavaScript
+		</>
+	)
+	
 	if (lang === 'py') return (
 		<>
 			<CircleIcon className="mr-1 h-3 w-3 fill-teal-400 text-teal-400" /> Python

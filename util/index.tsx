@@ -41,8 +41,14 @@ type TimeRangeLike = {
 
 export const timeRange = (input: TimeRangeLike) => {
    let { start, end, current } = input;
-   if (current) return `Since ${start}`;
-   return `${start} — ${end}`;
+   if (current) return start;
+   
+	const [startMonth, startYr] = start.split(' ');
+	const [endMonth, endYr] = end!.split(' ');
+	if (startYr === endYr)
+		return `${startMonth} ➜ ${endMonth} ${endYr}`
+	
+   return `${start} ➜ ${end}`;
 }
 
 export type GroupedBy<T> = {

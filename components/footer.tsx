@@ -3,7 +3,7 @@ import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 
 export const Footer: React.FC = () => (
 	<footer className="md:px-8 py-6 bg-brand-gradient">
-		<div className="container flex-col items-center justify-between gap-4 m:6-24 md:flex-row md:flex hidden">
+		<div className="container flex flex-row items-center justify-between gap-4 m:6-24">
 			<div className="font-mono text-center text-muted-background md:text-left">
 				<a
 					href="https://www.m1ke.co"

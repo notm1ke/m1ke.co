@@ -64,8 +64,8 @@ const ilefaProjects: Project[] = [
 		title: 'ILEFA Website',
 		visibility: 'public',
 		href: 'https://ilefa.club',
-		brief: 'The official website for ILEFA Labs. It contains a list our projects and social links.',
-		description: 'The official website for ILEFA Labs. It contains a list our projects and social links.'
+		brief: 'The official website for ILEFA Labs. It contains a list of our projects.',
+		description: 'The official website for ILEFA Labs built with Next.js, serving as the main listing of our projects.'
 	},
 	{
 		type: 'lib',
@@ -141,6 +141,16 @@ const ilefaProjects: Project[] = [
 		type: 'lib',
 		org: 'ilefa',
 		lang: 'ts',
+		title: '@ilefa/snapshots',
+		visibility: 'public',
+		href: 'https://github.com/ilefa/snapshots',
+		brief: 'Snapshots is a public UConn data archival repository.',
+		description: 'Snapshots is a public UConn data ardhival (courses, professors, campus info, etc.), over the course of several semesters. It contains both the snapshotted data and a toolkit for taking snapshots.'
+	},
+	{
+		type: 'lib',
+		org: 'ilefa',
+		lang: 'ts',
 		title: '@ilefa/ivy',
 		visibility: 'public',
 		archived: true,
@@ -169,7 +179,18 @@ const ilefaProjects: Project[] = [
 		href: 'https://github.com/ilefa/cartographer',
 		brief: 'Cartographer is an internal map-making tool for Cobalt Maps.',
 		description: 'Cartographer is an internal map-making tool for Cobalt Maps. It allows users to place pins on the map and configure their settings for points of interest.'
-	}
+	},
+	{
+		type: 'app',
+		org: 'ilefa',
+		lang: 'ts',
+		title: 'rkt',
+		visibility: 'public',
+		archived: true,
+		href: 'https://github.com/ilefa/rkt',
+		brief: 'rkt is a Discord bot created providing a toolkit for tracking stocks.',
+		description: 'rkt is a Discord bot created providing a toolkit for tracking stocks. It was created for a UConn discord server and later archived.'
+	},
 ]
 
 const uconnProjects: Project[] = [
@@ -309,7 +330,7 @@ const meProjects: Project[] = [
 		lang: 'ts',
 		title: 'Portfolio',
 		visibility: 'public',
-		href: 'https://m1ke.co',
+		href: 'https://github.com/notm1ke/m1ke.co',
 		brief: 'This website containing all of my projects, experience, and more.',
 		description: 'This website! It is built with Next.js, TypeScript, Tailwind, and shadcn/ui.'
 	},
@@ -355,6 +376,17 @@ const meProjects: Project[] = [
 		description: 'Matrix is a Java plugin runtime library I created while learning Java. It provides a simple API to load, unload, and manage plugins loaded from external JAR files.'
 	},
 	{
+		type: 'lib',
+		org: 'me',
+		lang: 'java',
+		title: 'Basic',
+		archived: true,
+		visibility: 'public',
+		href: 'https://github.com/notm1ke/basic',
+		brief: 'Basic is a Java library I created while learning Java, containing basic utilities.',
+		description: 'Basic is a Java library I created while learning Java, containing basic utilities.'
+	},
+	{
 		type: 'app',
 		org: 'me',
 		lang: 'java',
@@ -364,6 +396,17 @@ const meProjects: Project[] = [
 		href: 'https://github.com/notm1ke/gamesboat',
 		brief: 'GamesBoat is a Discord bot built for Discord\'s Hackweek Hackathon.',
 		description: 'GamesBoat is a Discord bot built for Discord\'s Hackweek Hackathon. It uses the JDA library and allows users to play games such as Tic Tac Toe, Connect Four, and more.'
+	},
+	{
+		type: 'app',
+		org: 'me',
+		lang: 'js',
+		title: 'BeastBurger',
+		archived: true,
+		visibility: 'public',
+		href: 'https://github.com/notm1ke/beastburger',
+		brief: 'BeastBurger was a React project that mapped all Mr Beast Burger locations.',
+		description: 'BeastBurger was a React project that mapped all Mr Beast Burger locations.'
 	},
 	{
 		type: 'app',
