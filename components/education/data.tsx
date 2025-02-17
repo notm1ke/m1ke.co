@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 export type EducationEntry = {
    institution: string;
    location: string;

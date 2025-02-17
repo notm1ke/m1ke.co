@@ -27,7 +27,7 @@ export default function Home() {
 							<AnimatedRevealAvatar src="/me.png" />
 						</div>
 						<div className="md:w-3/4 sm:w-full">
-							<p className="max-w-[500px] font-mono mt-5 tracking-tighter md:text-xl">
+							<div className="max-w-[500px] font-mono mt-5 tracking-tighter md:text-xl">
 								<span className="text-2xl text-purple-500 font-extrabold font-mono tracking-tighter">
 									Mike Medved
 								</span>
@@ -80,7 +80,7 @@ export default function Home() {
 										</div>
 									</div>
 								</div>
-							</p>
+							</div>
 						</div>
 					</div>
 				</section>

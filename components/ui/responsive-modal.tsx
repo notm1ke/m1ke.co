@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type JSX } from "react";
 import { useMediaQuery } from "~/hooks/media-query";
 import {
 	Drawer,

@@ -1,5 +1,7 @@
 import { mdiAccount } from "@mdi/js";
 
+import type { JSX } from "react";
+
 export type Project = {
    type: 'web' | 'lib' | 'app' | 'misc';
    org?: string;

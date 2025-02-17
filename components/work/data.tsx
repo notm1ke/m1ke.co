@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 export type ExperienceEntry = {
 	company: string;
    mobile?: string;
