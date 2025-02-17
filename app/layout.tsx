@@ -34,7 +34,7 @@ export default function RootLayout({
             </head>
             <body className={css("min-h-screen bg-pattern font-sans antialiased", sans.variable, mono.variable)}>
                 <ThemeProvider attribute="class" defaultTheme="dark">
-                    <div className="relative flex min-h-screen flex-col">
+                    <div className="relative flex min-h-screen flex-col font-mono">
                         <Header />
                         <div className="flex-1">{children}</div>
                         <Footer />

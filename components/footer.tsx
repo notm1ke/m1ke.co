@@ -1,4 +1,4 @@
-import { buttonVariants } from "./ui/button";
+import { Button } from "./ui/button";
 import { GithubIcon, LinkedinIcon } from 'lucide-react';
 
 export const Footer: React.FC = () => (
@@ -19,22 +19,32 @@ export const Footer: React.FC = () => (
 				<br />
 			</div>
 			<div className="flex gap-4">
-				<a
-					href="https://github.com/notm1ke"
-					rel="noopener noreferrer"
-					target="_blank"
-					className={buttonVariants({ variant: "purpleGhost" })}
+				<Button
+					asChild
+					variant="link"
 				>
-					<GithubIcon className="h-6 w-6" />
-				</a>
-				<a
-					href="https://linkedin.com/in/mike-medved"
-					rel="noopener noreferrer"
-					target="_blank"
-					className={buttonVariants({ variant: "purpleGhost" })}
+					<a
+						href="https://github.com/notm1ke"
+						rel="noopener noreferrer"
+						target="_blank"
+						className="hover:text-purple-300 transition-all duration-500 scale-125"
+					>
+						<GithubIcon size={100} />
+					</a>
+				</Button>
+				<Button
+					asChild
+					variant="link"
 				>
-					<LinkedinIcon className="h-6 w-6" />
-				</a>
+					<a
+						href="https://linkedin.com/in/mike-medved"
+						rel="noopener noreferrer"
+						target="_blank"
+						className="hover:text-purple-300 transition-all duration-500 scale-125"
+					>
+						<LinkedinIcon size={100} />
+					</a>
+				</Button>
 			</div>
 		</div>
 	</footer>

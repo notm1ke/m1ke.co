@@ -1,84 +1,67 @@
-import { MdiIcon, timeRange } from "~/util";
-import { ProjectOrgSection } from "../project";
-import { ExperienceEntry, WorkExperience } from "./data";
-import { mdiCalendarToday, mdiMapMarkerRadius } from "@mdi/js";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { WorkCard } from "./work-card";
+import { ChevronUp, ChevronDown } from "lucide-react";
+import { AnimatedSection } from "../animated-section";
+import { getProjectsByCompany, WorkExperience } from "./data";
+import { StickySectionHeader } from "../sticky-section-header";
 
-export const ExperienceSection = () =>
-	WorkExperience.map((experience, i) => (
-		<CompanySection key={i} entry={experience} />
-	));
+export const WorkSection = () => {
+	const [expanded, setExpanded] = useState(false);
 
-const CompanySection: React.FC<{ entry: ExperienceEntry }> = ({ entry }) => (
-	<div className="max-w-[1028px] flex-col">
-		<div className="flex">
-			<Avatar className="w-8 h-8 rounded-md border-2">
-				<AvatarImage
-					src={entry.image}
-					alt={entry.company}
-					style={{ filter: `sepia(100%) saturate(175%) brightness(80%) hue-rotate(212deg)` }}
-				/>
-				<AvatarFallback>
-					{entry.company.slice(0, 2).toUpperCase()}
-				</AvatarFallback>
-			</Avatar>
-			<div className="flex-1 ml-4 space-y-1">
-				{
-					entry.href && (
-						<a href={entry.href} className="text-[1.115rem] font-mono text-purple-300 font-semibold shine align-text-top">
-							{entry.company}
-						</a>
-					)
-				}
-				
-				{
-					!entry.href && (
-						<span className="text-lg font-mono text-purple-300 font-semibold align-text-top">
-							{entry.company}
-						</span>
-					)
-				}
+	return (
+		<section id="work">
+			<StickySectionHeader title="Work Experience" />
+			<div className="space-y-8">
+				{WorkExperience.slice(0, 3).map((work, index) => (
+					<WorkCard
+						key={index}
+						company={work.company}
+						icon={work.image}
+						positions={work.positions}
+						projects={getProjectsByCompany(work)}
+					/>
+				))}
+				{WorkExperience.length > 3 && (
+					<>
+						<AnimatedSection
+							isVisible={expanded}
+							className="space-y-8"
+						>
+							{WorkExperience.slice(3).map((work, index) => (
+								<WorkCard
+									key={index + 3}
+									company={work.company}
+									icon={work.image}
+									positions={work.positions}
+									projects={getProjectsByCompany(work)}
+								/>
+							))}
+						</AnimatedSection>
+						<motion.button
+							whileHover={{ scale: 1.02 }}
+							whileTap={{ scale: 0.98 }}
+							transition={{
+								type: "spring",
+								stiffness: 400,
+								damping: 30,
+							}}
+							onClick={() => setExpanded(!expanded)}
+							className="w-full text-purple-400 hover:text-purple-300 hover:bg-purple-500/10 px-4 py-2 rounded-md"
+						>
+							{expanded ? (
+								<>
+									<ChevronUp className="h-4 w-4 mr-2 inline" /> Show Less
+								</>
+							) : (
+								<>
+									<ChevronDown className="h-4 w-4 mr-2 inline" /> Show More
+								</>
+							)}
+						</motion.button>
+					</>
+				)}
 			</div>
-		</div>
-		
-		{
-			entry.positions.map((position, i) => (
-				<div key={i} className="mb-3">
-					<div className="mt-4">
-						<span className="text-base font-mono text-purple-200 font-semibold tracking-tight">
-							{position.title}
-						</span>
-					</div>
-	
-					<div className="flex space-x-3 items-center text-[0.95rem] mt-1 text-gray-300 font-mono tracking-tighter">
-						<div>
-							<span className="text-purple-100">
-								<MdiIcon path={mdiMapMarkerRadius} className="w-4 h-4 inline-block mr-2" />		
-								<span className="align-text-top">{position.location ?? "Remote"}</span>
-							</span>
-						</div>
-						<div className="h-5 border-l-[2px] border-solid border-gray-500 mt-1"></div>
-						<div>
-							<span className="align-text-top">
-								<MdiIcon path={mdiCalendarToday} className="w-4 h-4 inline-block mr-2" />
-								{timeRange(position)}
-							</span>
-						</div>
-					</div>
-					
-					<div className="text-[0.95rem] mt-1 text-gray-400">
-						{position.description ?? "No description was included for this position."}
-					</div>
-				</div>
-			))
-		}
-		
-		{
-			entry.orgKey && (
-				<div className="mt-5">
-					<ProjectOrgSection org={entry.orgKey} />
-				</div>
-			)
-		}
-	</div>
-);
+		</section>
+	);
+};

@@ -1,161 +1,213 @@
-import { AwardSection } from "~/components/award";
-import { QuickNav } from "~/components/quick-nav";
-import { css, MdiIcon, SocialConfig } from "~/util";
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Badge } from "~/components/ui/badge";
+import { Button } from "~/components/ui/button";
 import { Separator } from "~/components/ui/separator";
-import { ExperienceSection } from "~/components/work";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { ProjectOrgSection } from "~/components/project";
-import { EducationSection } from "~/components/education";
-import { AnimatedRevealAvatar } from "~/components/avatar";
-import { QuickNavConfig } from "~/components/quick-nav/config";
+import { DateDisplay } from "~/components/date-display";
+import { ProjectCard } from "~/components/project-card";
+import { ScrollArea } from "~/components/ui/scroll-area";
+import { Card, CardContent } from "~/components/ui/card";
+import { useSectionObserver } from "~/hooks/use-section-observer";
 
 import {
-	mdiBriefcaseVariant,
-	mdiMapMarkerRadius,
-	mdiMedal,
-	mdiSchool,
-	mdiSourceRepository,
-} from "@mdi/js";
+	Github,
+	Linkedin,
+	Mail,
+	MapPin,
+	Calendar,
+	ChevronDown,
+	ChevronUp,
+} from "lucide-react";
+import { WorkSection } from "~/components/work";
 
 export default function Home() {
+	const [isProjectsExpanded, setIsProjectsExpanded] = useState(false);
+	const activeSection = useSectionObserver();
+
+	// const visibleProjects = isProjectsExpanded
+	// 	? [...meProjects, ...projects]
+	// 	: [...meProjects, ...projects].slice(0, 9);
+
 	return (
-		<>
-			<div className="container">
-				<section className="flex max-w-[1028px] flex-col md:mt-7 md:py-12 lg:pt-24 lg:pb-12">
-					<div className="flex flex-col w-full md:flex-row">
-						<div className="md:w-1/4 sm:w-full space-y-3">
-							<AnimatedRevealAvatar src="/me.png" />
-						</div>
-						<div className="md:w-3/4 sm:w-full">
-							<div className="max-w-[500px] font-mono mt-5 tracking-tighter md:text-xl">
+		<div className="min-h-screen bg-black text-white">
+			<div className="mx-auto max-w-6xl px-4 py-8">
+				<div className="grid gap-8 md:grid-cols-[1fr_250px]">
+					<div className="space-y-12">
+						<div className="flex items-center gap-8 mt-12">
+							<Image
+								src="https://www.m1ke.co/me.png"
+								alt="Profile"
+								width={180}
+								height={180}
+								className="rounded-lg border border-purple-500/20"
+							/>
+							<div className="flex flex-col justify-center h-[180px]">
 								<span className="text-2xl text-purple-500 font-extrabold font-mono tracking-tighter">
 									Mike Medved
 								</span>
-								<br />
 								<div className="mt-3">
-									<span className="font-semibold">
+									<span className="text-lg text-gray-200">
 										SWE @ Walmart, CS Alumni @ UConn
 									</span>
 									<br />
-									<span className="text-gray-200/90">
+									<span className="text-lg text-gray-400">
 										Full Stack Software Engineer
 									</span>
-									<br />
-									<div className="mt-3">
-										<span className="text-purple-300">
-											<MdiIcon
-												path={mdiMapMarkerRadius}
-												className="inline-block"
-												size={1}
-											/>{" "}
+									<div className="flex items-center gap-4 mt-4">
+										<div className="flex items-center gap-1 text-md text-purple-400">
+											<MapPin className="h-6 w-6 mr-1" />
 											Bay Area
-										</span>
-										<div className="text-purple-300 ml-3 mr-2 inline align-middle">
-											&middot;
 										</div>
-										<div className="inline">
-											{
-												Object.values(SocialConfig).map(
-													({ url, icon }, i, arr) => (
-														<a
-															key={i}
-															href={url}
-															target="_blank"
-															rel="noopener noreferrer"
-															className={css(
-																"align-middle px-3 shine",
-																i === 0 && "pl-1",
-																i === arr.length - 1 && "pr-0",
-															)}
-														>
-															<MdiIcon
-																path={icon}
-																className="inline-block text-purple-300 align-sub"
-																size={1}
-															/>
-														</a>
-													),
-												)
-											}
+										<Separator
+											orientation="vertical"
+											className="h-6 bg-purple-500/20"
+										/>
+										<div className="flex items-center gap-4">
+											<a
+												href="https://github.com/notm1ke"
+												className="text-purple-400 hover:text-purple-300"
+											>
+												<Github className="h-6 w-6" />
+											</a>
+											<a
+												href="https://linkedin.com/in/mike-medved"
+												className="text-purple-400 hover:text-purple-300"
+											>
+												<Linkedin className="h-6 w-6" />
+											</a>
+											<a
+												href="mailto:me@m1ke.co"
+												className="text-purple-400 hover:text-purple-300"
+											>
+												<Mail className="h-6 w-6" />
+											</a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</section>
-				<Separator className="mt-5 md:hidden" />
-				<div className="flex flex-col w-full md:flex-row">
-					<div className="md:w-3/4 sm:w-full">
-						<section className="flex max-w-[1028px] flex-col py-8">
-							<div id="experience" className="flex flex-col gap-10 w-full">
-								<h2 className="text-xl md:text-2xl font-bold font-mono">
-									<MdiIcon
-										path={mdiBriefcaseVariant}
-										className="inline-block"
-										size="32px"
-									/>{" "}
-									Work Experience
-								</h2>
-								<ExperienceSection />
-							</div >
-						</section>
-						<Separator className="mb-2 md:hidden" />
-						<section className="flex max-w-[1028px] flex-col py-8">
-							<div id="projects" className="flex flex-col gap-10 w-full">
-								<h2 className="text-xl md:text-2xl font-bold font-mono">
-									<MdiIcon
-										path={mdiSourceRepository}
-										className="inline-block"
-										size="32px"
-									/>{" "}
-									Personal Projects
-								</h2>
-								<ProjectOrgSection org="me" />
+
+						{/* Work Experience */}
+						<WorkSection />
+						
+						{/* Personal Projects */}
+						{/* <section id="projects">
+							<StickySectionHeader title="Personal Projects" />
+							<div className="grid gap-6 md:grid-cols-2">
+								{visibleProjects.slice(0, 9).map((project) => (
+									<ProjectCard key={project.title} project={project} />
+								))}
 							</div>
-						</section>
-						<Separator className="mb-2 md:hidden" />
-						<section className="flex max-w-[1028px] flex-col py-8">
-							<div id="education" className="flex flex-col gap-10 w-full">
-								<h2 className="text-xl md:text-2xl font-bold font-mono">
-									<MdiIcon
-										path={mdiSchool}
-										className="inline-block"
-										size="32px"
-									/>{" "}
-									Education
-								</h2>
-								<EducationSection />
-							</div>
-						</section>
-						<Separator className="mb-2 md:hidden" />
-						<section className="flex max-w-[1028px] flex-col py-8">
-							<div id="honors" className="flex flex-col gap-10 w-full">
-								<h2 className="text-xl md:text-2xl font-bold font-mono">
-									<MdiIcon
-										path={mdiMedal}
-										className="inline-block"
-										size="32px"
-									/>{" "}
-									Honors &amp; Awards
-								</h2>
-								<AwardSection />
-							</div>
-						</section>
-					</div>
-					<div className="md:w-1/4 sm:w-full space-y-3">
-						<div className="hidden sticky text-sm xl:block">
-							<div className="sttop-16 pt-4">
-								<ScrollArea className="pb-10">
-									<div className="top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12 ml-3">
-										<QuickNav elements={QuickNavConfig} />
+							{visibleProjects.length > 9 && (
+								<Button
+									variant="ghost"
+									className="w-full mt-4 text-purple-400 hover:text-purple-300 hover:bg-purple-500/10"
+									onClick={() =>
+										setIsProjectsExpanded(!isProjectsExpanded)
+									}
+								>
+									{isProjectsExpanded ? (
+										<>
+											<ChevronUp className="h-4 w-4 mr-2" /> Show
+											Less
+										</>
+									) : (
+										<>
+											<ChevronDown className="h-4 w-4 mr-2" /> Show
+											More
+										</>
+									)}
+								</Button>
+							)}
+						</section> */}
+
+						{/* Education */}
+						{/* <section id="education">
+							<StickySectionHeader title="Education" />
+							<Card className="border-purple-500/20 bg-gray-900/50">
+								<CardContent className="p-6">
+									<Badge className="inline-flex items-center gap-2 px-3 py-1 text-base bg-purple-500/10 hover:bg-purple-500/20 transition-colors">
+										<Image
+											src="https://www.m1ke.co/logos/uconn.jpeg"
+											alt="UConn"
+											width={24}
+											height={24}
+											className="rounded-lg [filter:hue-rotate(-10deg)_saturate(70%)_brightness(0.9)]"
+										/>
+										<span className="font-medium text-purple-400">
+											University of Connecticut
+										</span>
+									</Badge>
+									<div className="mt-4">
+										<p className="text-gray-400">
+											Computer Science, B.S.
+										</p>
+										<div className="flex items-center gap-2 text-sm text-gray-500 mt-2">
+											<MapPin className="h-4 w-4" />
+											Storrs, CT
+											<Calendar className="h-4 w-4 ml-2" />
+											<DateDisplay date="Aug 2020 → May 2024" />
+										</div>
 									</div>
-								</ScrollArea>
-							</div>
-						</div>
+								</CardContent>
+							</Card>
+						</section> */}
+
+						{/* Honors & Awards */}
+						{/* <section id="honors">
+							<StickySectionHeader title="Honors & Awards" />
+							<Card className="border-purple-500/20 bg-gray-900/50">
+								<CardContent className="p-6">
+									<div className="space-y-4">
+										<div>
+											<h3 className="font-medium">FIRST Skyline</h3>
+											<p className="text-sm text-gray-400">
+												FRC#2265 2023 → 2024
+											</p>
+										</div>
+										<div>
+											<h3 className="font-medium">FIRST Skyline</h3>
+											<p className="text-sm text-gray-400">
+												FRC#2265 2022 → 2023
+											</p>
+										</div>
+									</div>
+								</CardContent>
+							</Card>
+						</section> */}
+					</div>
+
+					{/* Sidebar */}
+					<div className="sticky top-8 h-screen pt-12">
+						<ScrollArea className="h-[calc(100vh-6rem)]">
+							<nav className="space-y-2">
+								<h3 className="mb-4 text-lg font-bold text-purple-400">
+									On This Page
+								</h3>
+								{["work", "projects", "education", "honors"].map(
+									(section) => (
+										<a
+											key={section}
+											href={`#${section}`}
+											className={`block text-sm ${
+												activeSection === section
+													? "text-purple-400"
+													: "text-gray-400 hover:text-purple-400"
+											}`}
+										>
+											{section.charAt(0).toUpperCase() +
+												section.slice(1)}
+										</a>
+									),
+								)}
+							</nav>
+						</ScrollArea>
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
