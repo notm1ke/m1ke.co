@@ -1,6 +1,6 @@
 import { MdiIcon } from "~/util";
+import { Circle } from 'lucide-react';
 import { Project, Projects } from "./data";
-import { CircleIcon } from "@radix-ui/react-icons";
 import { ResponsiveModal } from "../ui/responsive-modal";
 
 import {
@@ -81,37 +81,37 @@ const projectIcon = ({ type }: Project) => {
 const langIndicator = ({ lang }: Project) => {
 	if (lang === 'ts') return (
 		<>
-			<CircleIcon className="mr-1 h-3 w-3 fill-sky-400 text-sky-400" /> TypeScript
+			<Circle className="mr-1 h-3 w-3 fill-sky-400 text-sky-400" /> TypeScript
 		</>
 	)
 	
 	if (lang === 'js') return (
 		<>
-			<CircleIcon className="mr-1 h-3 w-3 fill-yellow-300 text-yellow-300" /> JavaScript
+			<Circle className="mr-1 h-3 w-3 fill-yellow-300 text-yellow-300" /> JavaScript
 		</>
 	)
 	
 	if (lang === 'py') return (
 		<>
-			<CircleIcon className="mr-1 h-3 w-3 fill-teal-400 text-teal-400" /> Python
+			<Circle className="mr-1 h-3 w-3 fill-teal-400 text-teal-400" /> Python
 		</>
 	)
 	
 	if (lang === 'java') return (
 		<>
-			<CircleIcon className="mr-1 h-3 w-3 fill-orange-400 text-orange-400" /> Java
+			<Circle className="mr-1 h-3 w-3 fill-orange-400 text-orange-400" /> Java
 		</>
 	)
 	
 	if (lang === 'html') return (
 		<>
-			<CircleIcon className="mr-1 h-3 w-3 fill-red-400 text-red-400" /> HTML
+			<Circle className="mr-1 h-3 w-3 fill-red-400 text-red-400" /> HTML
 		</>
 	)
 	
 	if (lang === 'ps') return (
 		<>
-			<CircleIcon className="mr-1 h-3 w-3 fill-blue-400 text-blue-400" /> PowerShell
+			<Circle className="mr-1 h-3 w-3 fill-blue-400 text-blue-400" /> PowerShell
 		</>
 	)
 }

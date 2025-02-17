@@ -1,5 +1,5 @@
 import { buttonVariants } from "./ui/button";
-import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import { GithubIcon, LinkedinIcon } from 'lucide-react';
 
 export const Footer: React.FC = () => (
 	<footer className="md:px-8 py-6 bg-brand-gradient">
@@ -25,7 +25,7 @@ export const Footer: React.FC = () => (
 					target="_blank"
 					className={buttonVariants({ variant: "purpleGhost" })}
 				>
-					<GitHubLogoIcon className="h-6 w-6" />
+					<GithubIcon className="h-6 w-6" />
 				</a>
 				<a
 					href="https://linkedin.com/in/mike-medved"
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => (
 					target="_blank"
 					className={buttonVariants({ variant: "purpleGhost" })}
 				>
-					<LinkedInLogoIcon className="h-6 w-6" />
+					<LinkedinIcon className="h-6 w-6" />
 				</a>
 			</div>
 		</div>
