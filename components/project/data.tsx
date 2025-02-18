@@ -1,4 +1,4 @@
-import { mdiAccount } from "@mdi/js";
+import type { JSX } from "react";
 
 export type Project = {
    type: 'web' | 'lib' | 'app' | 'misc';
@@ -15,34 +15,24 @@ export type Project = {
 export type ProjectOrg = {
    name: string;
    key: string;
-   iconType: 'img' | 'icon';
-   iconSrc: string;
 }
 
 export const Orgs: ProjectOrg[] = [
 	{
 		name: 'ILEFA Labs',
 		key: 'ilefa',
-		iconType: 'img',
-		iconSrc: '/logos/ilefa.png'
 	},
 	{
 		name: 'Personal Projects',
 		key: 'me',
-		iconType: 'icon',
-		iconSrc: mdiAccount
 	},
 	{
 		name: 'Warp Studios',
 		key: 'warp',
-		iconType: 'img',
-		iconSrc: '/logos/warp.png'
 	},
 	{
 		name: 'University of Connecticut',
 		key: 'uconn',
-		iconType: 'img',
-		iconSrc: '/logos/uconn.jpeg'
 	}
 ]
 
@@ -427,3 +417,5 @@ export const Projects: Project[] = [
 	...meProjects,
 	...warpProjects
 ]
+
+export const PersonalProjects = meProjects;

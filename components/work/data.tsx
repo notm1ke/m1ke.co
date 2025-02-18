@@ -1,6 +1,8 @@
+import { JSX } from "react";
+import { Projects } from "../project/data";
+
 export type ExperienceEntry = {
 	company: string;
-   mobile?: string;
 	orgKey?: string;
 	href?: string;
 	image: string;
@@ -15,8 +17,12 @@ export type ExperiencePosition = {
 	start: string;
 	end?: string;
 	current?: boolean;
-	location?: string;
+	location: string;
 };
+
+export const getProjectsByCompany = (work: ExperienceEntry) => Projects.filter(
+	project => project.org === work.orgKey
+);
 
 type PositionType = "Full Time" | "Part Time" | "Contract" | "Internship" | "Other";
 
@@ -30,7 +36,7 @@ export const WorkExperience: ExperienceEntry[] = [
 			{
 				title: "Software Engineer II",
 				type: "Full Time",
-				description: "Full Stack Engineer working on Walmart.com Social Experiences.",
+				description: "Full Stack Engineer working on Social Commerce to create realtime customer-facing experiences on Walmart.com",
 				start: "Jul 2024",
 				current: true,
 				location: "Sunnyvale, CA",
@@ -38,7 +44,7 @@ export const WorkExperience: ExperienceEntry[] = [
 			{
 				title: "Software Engineer Intern",
 				type: "Internship",
-				description: "Full Stack SWE Intern working on the Walmart Health Virtual Care team.",
+				description: "Full Stack Engineering Intern working on the Walmart Health Virtual Care team (formerly MeMD) to support and enhance the Virtual Care Telehealth platform. During my time on the team, I developed new user-facing features, helped develop internal tools, and assisted with migrating core infrastructure on AWS.",
 				start: "May 2023",
 				end: "Aug 2023",
 				location: "Bentonville, AR",
@@ -47,7 +53,6 @@ export const WorkExperience: ExperienceEntry[] = [
 	},
 	{
 		company: "University of Connecticut",
-		mobile: "UConn",
 		orgKey: "uconn",
 		href: "https://its.uconn.edu",
 		image: "/logos/uconn.jpeg",
@@ -97,7 +102,8 @@ export const WorkExperience: ExperienceEntry[] = [
 				type: "Other",
 				description: "I am one of the founders of Warp Studios, a software development organization responsible for making small games and applications.",
 				start: "Jan 2020",
-				current: true
+				current: true,
+				location: "Remote"
 			},
 		],
 	},

@@ -1,161 +1,134 @@
-import { AwardSection } from "~/components/award";
-import { QuickNav } from "~/components/quick-nav";
-import { css, MdiIcon, SocialConfig } from "~/util";
-import { Separator } from "~/components/ui/separator";
-import { ExperienceSection } from "~/components/work";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { ProjectOrgSection } from "~/components/project";
-import { EducationSection } from "~/components/education";
-import { AnimatedRevealAvatar } from "~/components/avatar";
-import { QuickNavConfig } from "~/components/quick-nav/config";
+"use client";
 
-import {
-	mdiBriefcaseVariant,
-	mdiMapMarkerRadius,
-	mdiMedal,
-	mdiSchool,
-	mdiSourceRepository,
-} from "@mdi/js";
+import Image from "next/image";
+
+import { css, SocialConfig } from "~/util";
+import { WorkSection } from "~/components/work";
+import { AwardSection } from "~/components/award";
+import { Separator } from "~/components/ui/separator";
+import { ProjectSection } from "~/components/project";
+import { ScrollArea } from "~/components/ui/scroll-area";
+import { EducationSection } from "~/components/education";
+import { Github, Linkedin, Mail, MapPinned } from "lucide-react";
+import { useSectionObserver } from "~/hooks/use-section-observer";
 
 export default function Home() {
+	const activeSection = useSectionObserver();
+
 	return (
-		<>
-			<div className="container">
-				<section className="flex max-w-[1028px] flex-col md:mt-7 md:py-12 lg:pt-24 lg:pb-12">
-					<div className="flex flex-col w-full md:flex-row">
-						<div className="md:w-1/4 sm:w-full space-y-3">
-							<AnimatedRevealAvatar src="/me.png" />
+		<div className="min-h-screen bg-black text-white">
+			<div className="mx-auto max-w-6xl px-4 py-8">
+				<div className="grid gap-8 md:grid-cols-[1fr_250px]">
+					<div className="space-y-12">
+						<div className="inline sm:hidden">
+							<Image
+								src="https://www.m1ke.co/me.png"
+								alt="Mike Medved"
+								width={653}
+								height={639}
+								className="rounded-lg border-3 mt-2 border-purple-500/60"
+								style={{ filter: `sepia(100%) saturate(175%) brightness(95%) hue-rotate(222deg)` }}
+							/>
 						</div>
-						<div className="md:w-3/4 sm:w-full">
-							<p className="max-w-[500px] font-mono mt-5 tracking-tighter md:text-xl">
+						<div className="flex items-center gap-8 mt-2 sm:mt-12">
+							<Image
+								src="https://www.m1ke.co/me.png"
+								alt="Mike Medved"
+								width={180}
+								height={180}
+								className="rounded-lg border-3 mt-2 border-purple-500/60 hidden sm:inline"
+								style={{ filter: `sepia(100%) saturate(175%) brightness(95%) hue-rotate(222deg)` }}
+							/>
+							<div className="flex flex-col justify-center h-[120px] mt-8 sm:mt-0 sm:h-[180px]">
 								<span className="text-2xl text-purple-500 font-extrabold font-mono tracking-tighter">
 									Mike Medved
 								</span>
-								<br />
 								<div className="mt-3">
-									<span className="font-semibold">
+									<span className="text-md sm:text-lg font-semibold text-gray-200">
 										SWE @ Walmart, CS Alumni @ UConn
 									</span>
 									<br />
-									<span className="text-gray-200/90">
+									<span className="text-md sm:text-lg text-gray-400">
 										Full Stack Software Engineer
 									</span>
-									<br />
-									<div className="mt-3">
-										<span className="text-purple-300">
-											<MdiIcon
-												path={mdiMapMarkerRadius}
-												className="inline-block"
-												size={1}
-											/>{" "}
+									<div className="flex items-center gap-4 mt-4">
+										<div className="flex items-center gap-1 text-md text-purple-300">
+											<MapPinned className="h-6 w-6 mr-1" />
 											Bay Area
-										</span>
-										<div className="text-purple-300 ml-3 mr-2 inline align-middle">
-											&middot;
 										</div>
-										<div className="inline">
-											{
-												Object.values(SocialConfig).map(
-													({ url, icon }, i, arr) => (
-														<a
-															key={i}
-															href={url}
-															target="_blank"
-															rel="noopener noreferrer"
-															className={css(
-																"align-middle px-3 shine",
-																i === 0 && "pl-1",
-																i === arr.length - 1 && "pr-0",
-															)}
-														>
-															<MdiIcon
-																path={icon}
-																className="inline-block text-purple-300 align-sub"
-																size={1}
-															/>
-														</a>
-													),
-												)
-											}
+										<Separator
+											orientation="vertical"
+											className="h-6 bg-purple-500/40"
+										/>
+										<div className="flex items-center gap-4">
+											<a
+												href={SocialConfig.github}
+												data-track="header:github"
+												className="text-purple-300 hover:text-purple-100 transition-all duration-250"
+											>
+												<Github className="h-6 w-6" />
+											</a>
+											<a
+												href={SocialConfig.linkedin}
+												data-track="header:linkedin"
+												className="text-purple-300 hover:text-purple-100 transition-all duration-250"
+											>
+												<Linkedin className="h-6 w-6" />
+											</a>
+											<a
+												href={SocialConfig.email}
+												data-track="header:email"
+												className="text-purple-300 hover:text-purple-100 transition-all duration-250"
+											>
+												<Mail className="h-6 w-6" />
+											</a>
 										</div>
 									</div>
 								</div>
-							</p>
-						</div>
-					</div>
-				</section>
-				<Separator className="mt-5 md:hidden" />
-				<div className="flex flex-col w-full md:flex-row">
-					<div className="md:w-3/4 sm:w-full">
-						<section className="flex max-w-[1028px] flex-col py-8">
-							<div id="experience" className="flex flex-col gap-10 w-full">
-								<h2 className="text-xl md:text-2xl font-bold font-mono">
-									<MdiIcon
-										path={mdiBriefcaseVariant}
-										className="inline-block"
-										size="32px"
-									/>{" "}
-									Work Experience
-								</h2>
-								<ExperienceSection />
-							</div >
-						</section>
-						<Separator className="mb-2 md:hidden" />
-						<section className="flex max-w-[1028px] flex-col py-8">
-							<div id="projects" className="flex flex-col gap-10 w-full">
-								<h2 className="text-xl md:text-2xl font-bold font-mono">
-									<MdiIcon
-										path={mdiSourceRepository}
-										className="inline-block"
-										size="32px"
-									/>{" "}
-									Personal Projects
-								</h2>
-								<ProjectOrgSection org="me" />
-							</div>
-						</section>
-						<Separator className="mb-2 md:hidden" />
-						<section className="flex max-w-[1028px] flex-col py-8">
-							<div id="education" className="flex flex-col gap-10 w-full">
-								<h2 className="text-xl md:text-2xl font-bold font-mono">
-									<MdiIcon
-										path={mdiSchool}
-										className="inline-block"
-										size="32px"
-									/>{" "}
-									Education
-								</h2>
-								<EducationSection />
-							</div>
-						</section>
-						<Separator className="mb-2 md:hidden" />
-						<section className="flex max-w-[1028px] flex-col py-8">
-							<div id="honors" className="flex flex-col gap-10 w-full">
-								<h2 className="text-xl md:text-2xl font-bold font-mono">
-									<MdiIcon
-										path={mdiMedal}
-										className="inline-block"
-										size="32px"
-									/>{" "}
-									Honors &amp; Awards
-								</h2>
-								<AwardSection />
-							</div>
-						</section>
-					</div>
-					<div className="md:w-1/4 sm:w-full space-y-3">
-						<div className="hidden sticky text-sm xl:block">
-							<div className="sttop-16 pt-4">
-								<ScrollArea className="pb-10">
-									<div className="top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12 ml-3">
-										<QuickNav elements={QuickNavConfig} />
-									</div>
-								</ScrollArea>
 							</div>
 						</div>
+						
+						{/* Work Experience */}
+						<WorkSection />
+						
+						{/* Personal Projects */}
+						<ProjectSection />
+
+						{/* Education */}
+						<EducationSection />
+
+						{/* Honors & Awards */}
+						<AwardSection />	
+					</div>
+
+					{/* Sidebar */}
+					<div className="sticky top-8 h-screen pt-12 hidden sm:inline">
+						<ScrollArea className="h-[calc(100vh-6rem)]">
+							<nav className="space-y-2">
+								<h3 className="mb-4 text-lg font-bold text-purple-400">
+									On This Page
+								</h3>
+								{["work", "projects", "education", "honors"].map(
+									(section) => (
+										<a
+											key={section}
+											href={`#${section}`}
+											className={css(
+												`block text-sm transition-all duration-250`,
+													activeSection === section && "text-purple-400",
+													activeSection !== section && "text-gray-400 hover:text-purple-400"
+											)}
+										>
+											{section.charAt(0).toUpperCase() +
+												section.slice(1)}
+										</a>
+									),
+								)}
+							</nav>
+						</ScrollArea>
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
