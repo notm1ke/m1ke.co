@@ -16,8 +16,6 @@ interface StickyHeaderProps {
 export function StickySectionHeader({ title, className }: StickyHeaderProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [isStuck, setIsStuck] = useState(false)
-  
-  const { scrollY } = useScroll()
   const headerHeight = 40 // Approximate height of the header
   
   useEffect(() => {

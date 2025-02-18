@@ -1,4 +1,5 @@
 import { Button } from "./ui/button";
+import { SocialConfig } from "~/util";
 import { GithubIcon, LinkedinIcon } from 'lucide-react';
 
 export const Footer: React.FC = () => (
@@ -24,10 +25,11 @@ export const Footer: React.FC = () => (
 					variant="link"
 				>
 					<a
-						href="https://github.com/notm1ke"
+						href={SocialConfig.github}
+						data-track="footer:github"
 						rel="noopener noreferrer"
 						target="_blank"
-						className="hover:text-purple-300 transition-all duration-500 scale-125"
+						className="hover:text-purple-500 transition-all duration-500 scale-125"
 					>
 						<GithubIcon size={100} />
 					</a>
@@ -37,10 +39,11 @@ export const Footer: React.FC = () => (
 					variant="link"
 				>
 					<a
-						href="https://linkedin.com/in/mike-medved"
+						href={SocialConfig.linkedin}
+						data-track="footer:linkedin"
 						rel="noopener noreferrer"
 						target="_blank"
-						className="hover:text-purple-300 transition-all duration-500 scale-125"
+						className="hover:text-purple-500 transition-all duration-500 scale-125"
 					>
 						<LinkedinIcon size={100} />
 					</a>

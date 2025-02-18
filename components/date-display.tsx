@@ -14,13 +14,19 @@ interface DateDisplayProps {
 	current?: boolean;
 	startDate: string;
 	endDate?: string;
+	showFull?: boolean;
 	className?: string;
 }
 
-const formatDate = (startDate: string, endDate?: string, current?: boolean): [string, string] => {
+const formatDate = (startDate: string, endDate?: string, current?: boolean, showFull?: boolean): [string, string] => {
+	if (showFull && startDate && endDate) return [
+		`${startDate} - ${endDate}`,
+		`${startDate} - ${endDate}`
+	]
+	
 	const start = moment(startDate);
 	const startString = start.format("MMM YYYY");
-
+	
 	if (current) return [
 		startString,
 		`Since ${startString}`
@@ -49,8 +55,8 @@ const formatDate = (startDate: string, endDate?: string, current?: boolean): [st
 	return [displayText, `${startString} - ${end.format("MMM YYYY")}`];
 };
 
-export const DateDisplay: React.FC<DateDisplayProps> = ({ current, icon, startDate, endDate, className }) => {
-	const [display, tooltip] = formatDate(startDate, endDate, current);
+export const DateDisplay: React.FC<DateDisplayProps> = ({ current, icon, startDate, endDate, showFull, className }) => {
+	const [display, tooltip] = formatDate(startDate, endDate, current, showFull);
 	return (
 		<TooltipProvider>
 			<Tooltip>

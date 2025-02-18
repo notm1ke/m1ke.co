@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Project } from "../project/data"
 import { Badge } from "~/components/ui/badge"
 import { Globe, Code2, Library } from "lucide-react"
-import { WorkProjectCard } from "./work-project-card"
+import { ProjectCard } from "../project/project-card"
 
 interface WorkProjectsProps {
   projects?: Project[]
@@ -24,7 +24,7 @@ export const projectTypeIcons: Record<Project['type'], React.FC<IconProps>> = {
 export const langIndicator = ({ lang }: Project) => {
   if (lang === "ts")
     return (
-      <Badge variant="secondary" className="bg-sky-400/20 text-sky-400 shrink-0 hover:bg-sky-400/10">
+      <Badge variant="secondary" className="bg-sky-600/20 text-sky-600 shrink-0 hover:bg-sky-400/10">
         {lang}
       </Badge>
     )
@@ -75,7 +75,7 @@ export function WorkProjects({ projects }: WorkProjectsProps) {
       </motion.h4>
       <motion.div layout className="grid gap-4 md:grid-cols-2 relative">
         {projects.map(project => (
-          <WorkProjectCard key={project.title} project={project} />
+          <ProjectCard key={project.title} project={project} />
         ))}
       </motion.div>
     </motion.div>

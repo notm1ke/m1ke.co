@@ -9,7 +9,7 @@ import { calculateDuration } from "~/util";
 import { ExperiencePosition } from "./data";
 import { Badge } from "~/components/ui/badge";
 import { WorkProjects } from "./work-projects";
-import { PositionTimeline } from "../position-timeline";
+import { PositionTimeline } from "./position-timeline";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "~/components/ui/card";
 
@@ -60,7 +60,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({ company, icon, positions, pr
 										initial={{ opacity: 0 }}
 										animate={{ opacity: 1 }}
 										exit={{ opacity: 0 }}
-										className="text-sm text-gray-400"
+										className="hidden sm:inline text-sm text-gray-400"
 									>
 										{duration} · {positions.length} position
 										{positions.length !== 1 ? "s" : ""}
