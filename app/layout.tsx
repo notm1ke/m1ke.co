@@ -51,7 +51,7 @@ export default function RootLayout({
 					<OpenPanelComponent
 						apiUrl={process.env.NEXT_PUBLIC_OPENPANEL_API_URL!}
 						clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID!}
-						disabled={!!process.env.NEXT_PUBLIC_LIVE}
+						disabled={!process.env.NEXT_PUBLIC_LIVE}
 						trackScreenViews
 						trackOutgoingLinks
 						trackAttributes
