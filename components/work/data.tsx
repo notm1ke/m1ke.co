@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import { Projects } from "../project/data";
 
 export type ExperienceEntry = {

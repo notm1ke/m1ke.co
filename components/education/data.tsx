@@ -1,4 +1,4 @@
-import type { JSX, PropsWithChildren, PropsWithRef } from "react";
+import type { JSX, PropsWithChildren } from "react";
 
 export type EducationEntry = {
 	institution: string;

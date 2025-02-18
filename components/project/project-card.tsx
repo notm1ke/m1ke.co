@@ -1,8 +1,8 @@
 "use client";
 
 import { css } from "~/util";
-import { useState } from "react";
 import { Project } from "./data";
+import { JSX, useState } from "react";
 import { Badge } from "~/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "~/components/ui/card";

@@ -2,6 +2,7 @@
 
 import moment from "moment";
 
+import { JSX } from "react";
 import {
 	Tooltip,
 	TooltipContent,
