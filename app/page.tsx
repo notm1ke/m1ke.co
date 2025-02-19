@@ -18,13 +18,19 @@ export default function Home() {
 
 	return (
 		<div className="min-h-screen bg-black text-white">
-			<div className="relative w-full backdrop-blur-md backdrop-filter blur-md">
+			<div className="relative w-full blur-md hidden sm:inline">
 				<Banner
-		        height="6rem"
-		        variant="rainbow"
-		      />
+					height="6rem"
+					variant="vaporwave"
+				/>
 			</div>
-			<div className="mx-auto max-w-6xl px-4 -mt-6 sm:mt-0 sm:pt-1 pb-8">
+			<div className="relative w-full sm:hidden">
+				<Banner
+					height="2rem"
+					variant="vaporwave"
+				/>
+			</div>
+			<div className="mx-auto max-w-6xl px-4 -mt-2 sm:mt-0 sm:pt-1 pb-8">
 				<div className="grid gap-8 md:grid-cols-[1fr_250px]">
 					<div className="space-y-12">
 						<div className="flex items-center gap-8 mt-2 sm:mt-12">

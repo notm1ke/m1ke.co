@@ -9,7 +9,7 @@ interface BannerProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * @defaultValue 'normal'
    */
-  variant?: 'rainbow' | 'normal';
+  variant?: 'rainbow' | 'vaporwave' | 'normal';
   /**
    * @defaultValue true
    */
@@ -51,7 +51,7 @@ export function Banner({
       style={{ height: open ? height : '0' }}
       className={css(
         'sticky top-0 z-40 flex flex-row items-center justify-center bg-secondary px-4 text-center text-sm font-medium transition-all duration-300',
-        variant === 'rainbow' && 'bg-background',
+        variant !== 'normal' && 'bg-background',
         !open && 'hidden',
         props.className,
       )}
@@ -73,6 +73,7 @@ export function Banner({
       ) : null}
 
       {variant === 'rainbow' ? <RainbowLayer /> : null}
+      {variant === 'vaporwave' ? <VaporwaveLayer /> : null}
       {message || props.children}
       {id ? (
         <button
@@ -102,3 +103,13 @@ const RainbowLayer = () => {
     </>
   );
 };
+
+const VaporwaveLayer = () => {
+	return (
+		<>
+			<div className="absolute inset-0 z-[-1] vaporwave-banner-gradient-1" />
+			<div className="absolute inset-0 z-[-1] vaporwave-banner-gradient-2" />
+			<div className="absolute inset-0 z-[-1] vaporwave-banner-gradient-3" />
+		</>
+	);
+}
