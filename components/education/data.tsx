@@ -26,8 +26,8 @@ export const Education: Array<EducationEntry> = [
 		degreeType: "B.S",
 		major: "Computer Science",
 		minor: ["Mathematics"],
-		start: "Aug 2020",
-		end: "May 2024",
+		start: "Aug '20",
+		end: "May '24",
 		description: (
 			<div className="space-y-4">
 				<div>
