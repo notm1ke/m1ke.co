@@ -18,7 +18,7 @@ export default function Home() {
 
 	return (
 		<div className="min-h-screen bg-black text-white">
-			<div className="relative w-full blur-md hidden sm:inline">
+			<div className="relative w-full backdrop-blur-md backdrop-filter blur-md hidden sm:block">
 				<Banner
 					height="6rem"
 					variant="vaporwave"
