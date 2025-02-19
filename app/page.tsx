@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 import { css, SocialConfig } from "~/util";
+import { Banner } from "~/components/ui/banner";
 import { WorkSection } from "~/components/work";
 import { AwardSection } from "~/components/award";
 import { Separator } from "~/components/ui/separator";
@@ -17,19 +18,15 @@ export default function Home() {
 
 	return (
 		<div className="min-h-screen bg-black text-white">
-			<div className="mx-auto max-w-6xl px-4 py-8">
+			<div className="relative w-full backdrop-blur-md backdrop-filter blur-md">
+				<Banner
+		        height="6rem"
+		        variant="rainbow"
+		      />
+			</div>
+			<div className="mx-auto max-w-6xl px-4 -mt-6 sm:mt-0 sm:pt-1 pb-8">
 				<div className="grid gap-8 md:grid-cols-[1fr_250px]">
 					<div className="space-y-12">
-						<div className="inline sm:hidden">
-							<Image
-								src="https://www.m1ke.co/me.png"
-								alt="Mike Medved"
-								width={653}
-								height={639}
-								className="rounded-lg border-3 mt-2 border-purple-500/60"
-								style={{ filter: `sepia(100%) saturate(175%) brightness(95%) hue-rotate(222deg)` }}
-							/>
-						</div>
 						<div className="flex items-center gap-8 mt-2 sm:mt-12">
 							<Image
 								src="https://www.m1ke.co/me.png"
