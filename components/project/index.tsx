@@ -13,8 +13,8 @@ export const ProjectSection = () => {
 		<section id="projects">
 			<StickySectionHeader title="Personal Projects" />
 			<div className="grid gap-6 md:grid-cols-2">
-				{visibleProjects.slice(0, 9).map((project) => (
-					<ProjectCard key={project.title} project={project} />
+				{visibleProjects.slice(0, 9).map((project, posIndex) => (
+					<ProjectCard key={project.title} project={project} posIndex={posIndex} />
 				))}
 			</div>
 			{visibleProjects.length > 9 && (
