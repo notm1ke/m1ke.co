@@ -53,7 +53,7 @@ const ilefaProjects: Project[] = [
 		lang: 'ts',
 		title: 'ILEFA Website',
 		visibility: 'public',
-		href: 'https://ilefa.club',
+		href: 'https://ilefa.vercel.app/',
 		brief: 'The official website for ILEFA Labs. It contains a list of our projects.',
 		description: 'The official website for ILEFA Labs built with Next.js, serving as the main listing of our projects.'
 	},
@@ -295,9 +295,9 @@ const warpProjects: Project[] = [
 		type: 'lib',
 		org: 'warp',
 		lang: 'html',
-		title: '@bywarp/melon-ghost-theme',
+		title: '@bywarp/melon-ghost-css',
 		visibility: 'public',
-		href: 'https://github.com/bywarp/melon-ghost-theme',
+		href: 'https://github.com/bywarp/melon-ghost-css',
 		brief: 'A simple, clean, and responsive Ghost v3 Theme formerly used by Melon Games.',
 		description: 'A simple, clean, and responsive Ghost v3 Theme formerly used by Melon Games.'
 	},

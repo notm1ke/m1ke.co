@@ -1,3 +1,5 @@
+import moment from "moment";
+
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
 import { ExperiencePosition } from "~/components/work/data";
@@ -49,61 +51,27 @@ export const groupBy = <T,>(xs: T[], key: keyof T): GroupedBy<T> =>
 		{} as Record<string, T[]>,
 	);
 
-export function calculateDuration(
-	positions: Array<ExperiencePosition>,
-): string {
-	const now = new Date();
-	let totalMonths = 0;
+export const calculateDuration = (positions: Array<ExperiencePosition>): string => {
+	let months = positions
+		.sort((a, b) => {
+			const dateA = moment(a.start);
+			const dateB = moment(b.start);
+			return dateA.diff(dateB);
+		})
+		.reduce((acc, position) => {
+			const { start, end } = position;
+			const startDate = moment(start);
+			const endDate = position.current
+				? moment()
+				: moment(end);
+			
+			return acc + endDate.diff(startDate, 'months');
+		}, 0);
 
-	// Sort positions by start date
-	positions.sort((a, b) => {
-		const dateA = parseDate(a.start.split(" → ")[0]);
-		const dateB = parseDate(b.start.split(" → ")[0]);
-		return dateA.getTime() - dateB.getTime();
-	});
-
-	positions.forEach((position) => {
-		const { start, end } = position;
-		const startDate = parseDate(start);
-		const endDate = end ? parseDate(end) : now;
-
-		totalMonths += monthDiff(startDate, endDate);
-	});
-
-	return formatDuration(totalMonths);
+	return formatDuration(months);
 }
 
-function parseDate(dateString: string): Date {
-	const [month, year] = dateString.split(" ");
-	return new Date(parseInt(year), getMonthIndex(month));
-}
-
-function getMonthIndex(month: string): number {
-	const months = [
-		"Jan",
-		"Feb",
-		"Mar",
-		"Apr",
-		"May",
-		"Jun",
-		"Jul",
-		"Aug",
-		"Sep",
-		"Oct",
-		"Nov",
-		"Dec",
-	];
-	return months.indexOf(month);
-}
-
-function monthDiff(d1: Date, d2: Date): number {
-	let months = (d2.getFullYear() - d1.getFullYear()) * 12;
-	months -= d1.getMonth();
-	months += d2.getMonth();
-	return months <= 0 ? 0 : months;
-}
-
-function formatDuration(months: number): string {
+export const formatDuration = (months: number): string => {
 	const years = Math.floor(months / 12);
 	const remainingMonths = months % 12;
 

@@ -24,6 +24,11 @@ export const getProjectsByCompany = (work: ExperienceEntry) => Projects.filter(
 	project => project.org === work.orgKey
 );
 
+export const isIrregularEmployment = (position: ExperiencePosition) => 
+	position.type !== 'Full Time'
+	&& position.type !== 'Part Time'
+	&& position.type !== 'Internship';
+
 type PositionType = "Full Time" | "Part Time" | "Contract" | "Internship" | "Other";
 
 export const WorkExperience: ExperienceEntry[] = [
@@ -83,7 +88,7 @@ export const WorkExperience: ExperienceEntry[] = [
 		positions: [
 			{
 				title: "Founder",
-				type: "Full Time",
+				type: "Other",
 				description: "I am a founder and full-stack software engineer at ILEFA Labs. I work on websites, open-source libraries, and other projects at the organization.",
 				start: "2020-12-01",
 				end: "2024-05-30",

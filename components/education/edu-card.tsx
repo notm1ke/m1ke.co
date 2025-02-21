@@ -6,7 +6,8 @@ import { Badge } from "../ui/badge";
 import { EducationEntry } from "./data";
 import { DateDisplay } from "../date-display";
 import { Card, CardContent } from "../ui/card";
-import { MapPin, Calendar, GraduationCap } from "lucide-react";
+import { LocationDisplay } from "../location-display";
+import { Calendar, GraduationCap } from "lucide-react";
 
 export const EducationCard: React.FC<{ edu: EducationEntry }> = ({ edu }) => (
 	<Card className="border-purple-500/20 bg-gray-900/50">
@@ -15,7 +16,7 @@ export const EducationCard: React.FC<{ edu: EducationEntry }> = ({ edu }) => (
 				{/* Header with Institution */}
 				<Badge className="inline-flex items-center gap-2 px-3 py-1 text-base bg-purple-500/10 hover:bg-purple-500/20 transition-colors w-fit">
 					<Image
-						src={edu.image || "/placeholder.svg"}
+						src={edu.image}
 						alt={edu.institution}
 						width={24}
 						height={24}
@@ -48,10 +49,7 @@ export const EducationCard: React.FC<{ edu: EducationEntry }> = ({ edu }) => (
 
 				{/* Footer with Location and Date */}
 				<div className="flex items-center gap-4 text-sm text-gray-500 pt-2 px-3 justify-between">
-					<div className="flex items-center gap-2">
-						<MapPin className="h-4 w-4" />
-						<span>{edu.location}</span>
-					</div>
+					<LocationDisplay location={edu.location} />
 					<div className="flex items-center gap-2">
 						<DateDisplay showFull startDate={edu.start} endDate={edu.end} icon={<Calendar className="h-4 w-4 inline" />} />
 					</div>

@@ -1,17 +1,17 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Project } from "../project/data"
-import { Badge } from "~/components/ui/badge"
-import { Globe, Code2, Library } from "lucide-react"
-import { ProjectCard } from "../project/project-card"
+import { motion } from "framer-motion";
+import { Project } from "../project/data";
+import { Badge } from "~/components/ui/badge";
+import { Globe, Code2, Library } from "lucide-react";
+import { ProjectCard } from "../project/project-card";
 
 interface WorkProjectsProps {
-  projects?: Project[]
+  projects?: Project[];
 }
 
 interface IconProps {
-	className?: string
+  className?: string;
 }
 
 export const projectTypeIcons: Record<Project['type'], React.FC<IconProps>> = {
@@ -74,8 +74,8 @@ export function WorkProjects({ projects }: WorkProjectsProps) {
         Related Projects
       </motion.h4>
       <motion.div layout className="grid gap-4 md:grid-cols-2 relative">
-        {projects.map(project => (
-          <ProjectCard key={project.title} project={project} />
+        {projects.map((project, posIndex) => (
+          <ProjectCard key={project.title} project={project} posIndex={posIndex} />
         ))}
       </motion.div>
     </motion.div>

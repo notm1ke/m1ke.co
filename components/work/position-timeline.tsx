@@ -3,13 +3,13 @@
 import moment from "moment";
 
 import { motion } from "framer-motion";
+import { ExperiencePosition, isIrregularEmployment } from "./data";
 import { DateDisplay } from "../date-display";
 import { Calendar, Clock } from "lucide-react";
-import { ExperiencePosition } from "./data";
 import { LocationDisplay } from "../location-display";
 
 export const PositionTimeline: React.FC<{
-	positions: Array<ExperiencePosition>;
+	positions: Array<ExperiencePosition>
 }> = ({ positions }) => {
 	const hasMultiplePositions = positions.length > 1;
 	const sorted = positions.sort((a, b) => {
@@ -19,7 +19,7 @@ export const PositionTimeline: React.FC<{
 	});
 	
 	return (
-		<motion.div layout className="mt-6 relative">
+		<motion.div exit={{opacity: 0, y: -20}} layout className="mt-6 relative">
 			{sorted.map((position, posIndex) => (
 				<motion.div
 					layout
@@ -27,6 +27,7 @@ export const PositionTimeline: React.FC<{
 					className={`relative ${hasMultiplePositions ? "sm:pl-10" : ""} pb-6 last:pb-0`}
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
 					transition={{
 						delay: posIndex * 0.1,
 						layout: { type: "spring", bounce: 0.2 },
@@ -54,6 +55,11 @@ export const PositionTimeline: React.FC<{
 								<div className="flex-1">
 									<h4 className="font-medium mb-2">
 										{position.title}
+										{isIrregularEmployment(position) && (
+											<span className="text-gray-400 text-sm ml-2">
+												({position.type})
+											</span>
+										)}
 									</h4>
 									<p className="text-sm text-gray-400 max-w-[65ch]">
 										{position.description}

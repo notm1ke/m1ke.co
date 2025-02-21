@@ -20,6 +20,7 @@ import {
 
 interface WorkProjectCardProps {
 	project: Project;
+	posIndex: number;
 }
 
 const ArchivedIndicator = () => (
@@ -85,8 +86,9 @@ const GoLink: React.FC<{ href?: string }> = ({ href }) => {
 	)
 }
 
-export const ProjectCard: React.FC<WorkProjectCardProps> = ({ project }) => {
-	const [isExpanded, setIsExpanded] = useState(false);
+export const ProjectCard: React.FC<WorkProjectCardProps> = ({ project, posIndex }) => {
+	const [expanded, setExpanded] = useState(false);
+	
 	const Icon = projectTypeIcons[project.type];
 	const indicators: JSX.Element[] = [
 		<VisibilityIndicator
@@ -102,18 +104,20 @@ export const ProjectCard: React.FC<WorkProjectCardProps> = ({ project }) => {
 	return (
 		<motion.div
 			layout
-			initial={false}
-			animate={{ scale: 1 }}
-			whileHover={{ scale: isExpanded ? 1 : 1.02 }}
-			whileTap={{ scale: isExpanded ? 1 : 0.98 }}
+			initial={{ opacity: 0, y: -20 }}
+			animate={{ opacity: 1, y: 0 }}
+			exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
+			whileHover={{ scale: expanded ? 1 : 1.02 }}
+			whileTap={{ scale: expanded ? 1 : 0.98 }}
 			transition={{
+				delay: posIndex * 0.1,
 				layout: { type: "spring", bounce: 0.2 },
 			}}
-			onClick={() => setIsExpanded(!isExpanded)}
-			className={isExpanded ? "" : "cursor-pointer"}
+			onClick={() => setExpanded(!expanded)}
+			className={expanded ? "" : "cursor-pointer"}
 		>
 			<Card className="border-purple-500/20 bg-gray-900/50 hover:bg-gray-900/80 transition-colors h-full">
-				<CardContent className={`p-4 ${isExpanded ? "pb-4" : ""}`}>
+				<CardContent className={`p-4 ${expanded ? "pb-4" : ""}`}>
 					<motion.div layout="position">
 						<div className="flex items-start justify-between gap-4">
 							<div className="flex-1 min-w-0">
@@ -123,9 +127,9 @@ export const ProjectCard: React.FC<WorkProjectCardProps> = ({ project }) => {
 										{project.title}
 									</h3>
 								</div>
-								<p className={css("text-sm text-gray-400", !isExpanded && "line-clamp-2")}>
+								<p className={css("text-sm text-gray-400", !expanded && "line-clamp-2")}>
 									{
-										isExpanded ? project.description : project.brief
+										expanded ? project.description : project.brief
 									}
 								</p>
 							</div>
@@ -133,7 +137,7 @@ export const ProjectCard: React.FC<WorkProjectCardProps> = ({ project }) => {
 						</div>
 					</motion.div>
 					<AnimatePresence initial={false}>
-						{isExpanded && (
+						{expanded && (
 							<motion.div
 								layout
 								initial={{ opacity: 0 }}
