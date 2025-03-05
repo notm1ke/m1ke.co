@@ -26,7 +26,6 @@ export const Footer: React.FC = () => (
 				>
 					<a
 						href={SocialConfig.github}
-						data-track="footer:github"
 						rel="noopener noreferrer"
 						target="_blank"
 						className="hover:text-purple-500 transition-all duration-500 scale-125"
@@ -40,7 +39,6 @@ export const Footer: React.FC = () => (
 				>
 					<a
 						href={SocialConfig.linkedin}
-						data-track="footer:linkedin"
 						rel="noopener noreferrer"
 						target="_blank"
 						className="hover:text-purple-500 transition-all duration-500 scale-125"

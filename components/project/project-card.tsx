@@ -66,7 +66,6 @@ const GoLink: React.FC<{ href?: string }> = ({ href }) => {
 		<a
 			href={href}
 			target="_blank"
-			data-track="project:visit:repo"
 			className="flex items-center gap-2"
 		>
 			<FolderGit2 className="w-4 h-4 mr-1" /> Repo
@@ -77,7 +76,6 @@ const GoLink: React.FC<{ href?: string }> = ({ href }) => {
 		<a
 			href={href}
 			target="_blank"
-			data-track="project:visit:website"
 			rel="noopener noreferrer"
 			className="flex items-center gap-2"
 		>

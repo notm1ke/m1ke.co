@@ -66,21 +66,18 @@ export default function Home() {
 										<div className="flex items-center gap-4">
 											<a
 												href={SocialConfig.github}
-												data-track="header:github"
 												className="text-purple-300 hover:text-purple-100 transition-all duration-250"
 											>
 												<Github className="h-6 w-6" />
 											</a>
 											<a
 												href={SocialConfig.linkedin}
-												data-track="header:linkedin"
 												className="text-purple-300 hover:text-purple-100 transition-all duration-250"
 											>
 												<Linkedin className="h-6 w-6" />
 											</a>
 											<a
 												href={SocialConfig.email}
-												data-track="header:email"
 												className="text-purple-300 hover:text-purple-100 transition-all duration-250"
 											>
 												<Mail className="h-6 w-6" />
