@@ -1,8 +1,7 @@
-import PlausibleProvider from 'next-plausible';
-
 import { css } from "~/util";
 import type { Metadata } from "next";
 import { Footer } from "~/components/footer";
+import { OpenPanelComponent } from "@openpanel/nextjs";
 import { Open_Sans, Roboto_Mono } from "next/font/google";
 import { ThemeProvider } from "~/components/ui/theme-provider";
 
@@ -45,18 +44,18 @@ export default function RootLayout({
 				)}
 			>
 				<ThemeProvider attribute="class" defaultTheme="dark">
-					<PlausibleProvider
-						selfHosted
-						taggedEvents
-						trackOutboundLinks
-						domain={process.env.NEXT_PUBLIC_ANALYTICS_DOMAIN!}
-						enabled={process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "true"}
-					>
-						<div className="relative flex min-h-screen flex-col font-mono">
-							<div className="flex-1">{children}</div>
-							<Footer />
-						</div>
-					</PlausibleProvider>
+					<div className="relative flex min-h-screen flex-col font-mono">
+						<div className="flex-1">{children}</div>
+						<Footer />
+					</div>
+					<OpenPanelComponent
+						apiUrl={process.env.NEXT_PUBLIC_OPENPANEL_API_URL!}
+						clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID!}
+						disabled={!process.env.NEXT_PUBLIC_LIVE}
+						trackScreenViews
+						trackOutgoingLinks
+						trackAttributes
+					/>
 				</ThemeProvider>
 			</body>
 		</html>
