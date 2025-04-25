@@ -50,6 +50,7 @@ export default function RootLayout({
 					</div>
 					<OpenPanelComponent
 						apiUrl="/api/op"
+						cdnUrl={process.env.NEXT_PUBLIC_OPENPANEL_CDN_URL!}
 						clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID!}
 						disabled={!process.env.NEXT_PUBLIC_LIVE}
 						trackScreenViews
