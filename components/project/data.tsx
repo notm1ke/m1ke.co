@@ -31,10 +31,16 @@ export const Orgs: ProjectOrg[] = [
 		key: 'warp',
 	},
 	{
+		name: 'Walmart Global Tech',
+		key: 'wmt',
+	},
+	{
 		name: 'University of Connecticut',
 		key: 'uconn',
 	}
 ]
+
+const wmtProjects: Project[] = []; 
 
 const ilefaProjects: Project[] = [
 	{
@@ -96,6 +102,16 @@ const ilefaProjects: Project[] = [
 		href: 'https://github.com/ilefa/blueplate',
 		brief: 'Blueplate is a library for interacting with UConn Dining.',
 		description: 'Blueplate is a lightweight Node.js library for interacting with UConn Dining related resources such as dining hall menus, schedules, and more.'
+	},
+	{
+		type: 'lib',
+		org: 'ilefa',
+		lang: 'ts',
+		title: '@ilefa/bluefit',
+		visibility: 'public',
+		href: 'https://github.com/ilefa/bluefit',
+		brief: 'Bluefit is a library for extracting the realtime Rec Center occupancy.',
+		description: 'Bluefit is a lightweight Node.js library used for extracting realtime Rec Center occupancy information by connecting to the Socket.io stream powering the Rec mobile app.'
 	},
 	{
       type: 'lib',
@@ -282,6 +298,46 @@ const warpProjects: Project[] = [
 		description: 'The official website for Warp Studios. It will be built out in the future.'
 	},
 	{
+		type: 'app',
+		org: 'warp',
+		lang: 'java',
+		title: 'Bonsai',
+		visibility: 'public',
+		href: 'https://github.com/bywarp/Bonsai',
+		brief: 'A BungeeCord plugin that supervises proxy operations for Melon Games servers.',
+		description: 'A BungeeCord plugin that supervises proxy operations for Melon Games servers. More specifically it handles messages from the server deployment system and tracks where players are throughout the downstream servers.'
+	},
+	{
+		type: 'app',
+		org: 'warp',
+		lang: 'java',
+		title: 'Tangerine',
+		visibility: 'public',
+		href: 'https://github.com/bywarp/Tangerine',
+		brief: 'The lobby plugin used by Melon Games.',
+		description: 'The lobby plugin used by Melon Games. It provides a variety of features such as server browsing and fun interactivity.'
+	},
+	{
+		type: 'app',
+		org: 'warp',
+		lang: 'java',
+		title: 'MapAgent',
+		visibility: 'public',
+		href: 'https://github.com/bywarp/MapAgent',
+		brief: 'A map parsing suite used by Melon Games.',
+		description: 'A map parsing suite used by Melon Games. It has a bunch of tools to make builders\' lives easier, such as data-blocks based parsing, map validation, and other custom tooling needed for map development.'
+	},
+	{
+		type: 'app',
+		org: 'warp',
+		lang: 'java',
+		title: 'Ditto',
+		visibility: 'public',
+		href: 'https://github.com/bywarp/Ditto',
+		brief: 'A tool used in Melon Docker images to help bootstrap servers.',
+		description: 'A tool used in Melon Docker images to help bootstrap servers. More specifically, it helps clone down environment-specific assets, configure server preferences, and ensure managed server instances are ready for players.'
+	},
+	{
 		type: 'lib',
 		org: 'warp',
 		lang: 'java',
@@ -323,6 +379,26 @@ const meProjects: Project[] = [
 		href: 'https://github.com/notm1ke/m1ke.co',
 		brief: 'This website containing all of my projects, experience, and more.',
 		description: 'This website! It is built with Next.js, TypeScript, Tailwind, and shadcn/ui.'
+	},
+	{
+		type: 'web',
+		org: 'me',
+		lang: 'ts',
+		title: 'Airside',
+		visibility: 'public',
+		href: 'https://airside.info',
+		brief: 'A beautifully designed and performant platform for all things travel.',
+		description: 'A beautifully designed and performant platform to track trips, view accurate real-time airport info, submit reviews, and visualize travel history. Built with TypeScript, Next.js, Postgres, Redis, S3, n8n.'
+	},
+	{
+		type: 'lib',
+		org: 'me',
+		lang: 'ts',
+		title: 'Lounges',
+		visibility: 'public',
+		href: 'https://github.com/notm1ke/lounges',
+		brief: 'A comprehensive open source database of airport lounges in the US.',
+		description: 'A comprehensive open source database of airport lounges in the US.'
 	},
 	{
 		type: 'web',
@@ -412,6 +488,7 @@ const meProjects: Project[] = [
 ]
 
 export const Projects: Project[] = [
+	...wmtProjects,
 	...ilefaProjects,
 	...uconnProjects,
 	...meProjects,

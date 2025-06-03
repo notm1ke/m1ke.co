@@ -24,10 +24,8 @@ export const getProjectsByCompany = (work: ExperienceEntry) => Projects.filter(
 	project => project.org === work.orgKey
 );
 
-export const isIrregularEmployment = (position: ExperiencePosition) => 
-	position.type !== 'Full Time'
-	&& position.type !== 'Part Time'
-	&& position.type !== 'Internship';
+// todo: add others if they come up
+export const isIrregularEmployment = (position: ExperiencePosition) => position.type === 'Contract';
 
 type PositionType = "Full Time" | "Part Time" | "Contract" | "Internship" | "Other";
 
@@ -41,7 +39,7 @@ export const WorkExperience: ExperienceEntry[] = [
 			{
 				title: "Software Engineer II",
 				type: "Full Time",
-				description: "Full Stack Engineer working on Social Commerce to create realtime customer-facing experiences on Walmart.com",
+				description: "Built a Social Hub on Walmart.com with a reels feed to showcase creator content, using Next.js and GraphQL. Developed a real-time financial reporting service for the Thanksgiving/Black Friday period. Created internal tools, including a DevOps dashboard integrating SonarQube, Snyk, Git, and other tools, along with a GenAI content creation platform used by Walmart merchants. Collaborated across teams to integrate GenAI-powered UX enhancements into on-site social experiences.",
 				start: "2024-07-08",
 				current: true,
 				location: "Sunnyvale, CA",
@@ -49,7 +47,7 @@ export const WorkExperience: ExperienceEntry[] = [
 			{
 				title: "Software Engineer Intern",
 				type: "Internship",
-				description: "Full Stack Engineering Intern working on the Walmart Health Virtual Care team (formerly MeMD) to support and enhance the Virtual Care Telehealth platform. During my time on the team, I developed new user-facing features, helped develop internal tools, and assisted with migrating core infrastructure on AWS.",
+				description: "Enhanced the Virtual Care Telehealth platform (MeMD) by developing full-stack features using Angular, TypeScript, and AWS services across patient, care coordinator, and provider portals. Contributed to user-facing features such as the scheduling flow and video/chat capabilities, improving the telehealth experience for tens of thousands of users. Also led the creation of a Datadog integration to generate automated error reports.",
 				start: "2023-05-31",
 				end: "2023-08-11",
 				location: "Bentonville, AR",
@@ -103,9 +101,9 @@ export const WorkExperience: ExperienceEntry[] = [
 		image: "/logos/warp.png",
 		positions: [
 			{
-				title: "Co-Founder",
+				title: "Contributor",
 				type: "Other",
-				description: "I am one of the founders of Warp Studios, a software development organization responsible for making small games and applications.",
+				description: "I am one of the contributors of Warp Studios, a software development organization responsible for making small games and other assorted applications.",
 				start: "2020-01-01",
 				current: true,
 				location: "Remote"

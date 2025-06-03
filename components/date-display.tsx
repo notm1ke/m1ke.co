@@ -9,6 +9,7 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { css } from "~/util";
 
 interface DateDisplayProps {
 	icon: JSX.Element;
@@ -60,9 +61,9 @@ export const DateDisplay: React.FC<DateDisplayProps> = ({ current, icon, startDa
 	const [display, tooltip] = formatDate(startDate, endDate, current, showFull);
 	return (
 		<TooltipProvider>
-			<Tooltip>
-				<TooltipTrigger className={className}>{icon} {display}</TooltipTrigger>
-				<TooltipContent>
+			<Tooltip delayDuration={0}>
+				<TooltipTrigger className={css("cursor-help", className)}>{icon} {display}</TooltipTrigger>
+				<TooltipContent side="bottom">
 					<p>{tooltip}</p>
 				</TooltipContent>
 			</Tooltip>

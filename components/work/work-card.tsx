@@ -4,11 +4,11 @@ import Image from "next/image";
 
 import { useState } from "react";
 import { Project } from "../project/data";
-import { ChevronDown } from "lucide-react";
 import { calculateDuration } from "~/util";
 import { ExperiencePosition } from "./data";
 import { Badge } from "~/components/ui/badge";
 import { WorkProjects } from "./work-projects";
+import { ChevronDown, Slash } from "lucide-react";
 import { PositionTimeline } from "./position-timeline";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "~/components/ui/card";
@@ -76,10 +76,13 @@ export const WorkCard: React.FC<WorkCardProps> = ({ company, icon, positions, pr
 											transition={{ duration: 0.2 }}
 											className="hidden sm:inline text-sm text-gray-400"
 										>
-											{duration} · {positions.length} position
+											{duration}
+											<Slash className="inline size-3.5 mx-2 text-gray-700" />
+											{positions.length} position
 											{positions.length !== 1 ? "s" : ""}
+											{(projects && projects.length > 0) && <Slash className="inline size-3.5 mx-2 text-gray-700" />}
 											{projects?.length
-												? ` · ${projects.length} project${projects.length !== 1 ? "s" : ""}`
+												? `${projects.length} project${projects.length !== 1 ? "s" : ""}`
 												: ""}
 										</motion.div>
 									)}

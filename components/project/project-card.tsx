@@ -58,7 +58,7 @@ const VisibilityIndicator: React.FC<{ project: Project }> = ({ project }) => (
 const GoLink: React.FC<{ href?: string }> = ({ href }) => {
 	if (!href) return (
 		<div className="flex items-center gap-2 text-red-400 hover:text-red-300">
-			<Unlink className="w-4 h-4 mr-1" /> Not Accessible
+			<Unlink className="w-4 h-4 mr-1" /> No Link
 		</div>
 	)
 	
