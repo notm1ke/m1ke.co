@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 import { css, SocialConfig } from "~/util";
+import { Mail, MapPinHouse, MapPinned } from "lucide-react";
 import { Banner } from "~/components/ui/banner";
 import { WorkSection } from "~/components/work";
 import { AwardSection } from "~/components/award";
@@ -10,7 +11,8 @@ import { Separator } from "~/components/ui/separator";
 import { ProjectSection } from "~/components/project";
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { EducationSection } from "~/components/education";
-import { Github, Linkedin, Mail, MapPinned } from "lucide-react";
+import { GithubIcon } from "~/components/ui/icons/github";
+import { LinkedinIcon } from "~/components/ui/icons/linkedin";
 import { useSectionObserver } from "~/hooks/use-section-observer";
 
 export default function Home() {
@@ -56,7 +58,7 @@ export default function Home() {
 									</span>
 									<div className="flex items-center gap-4 mt-4">
 										<div className="flex items-center gap-1 text-md text-purple-300">
-											<MapPinned className="h-6 w-6 mr-1" />
+											<MapPinHouse className="h-5.5 w-5.5 mr-1" />
 											Bay Area
 										</div>
 										<Separator
@@ -68,19 +70,19 @@ export default function Home() {
 												href={SocialConfig.github}
 												className="text-purple-300 hover:text-purple-100 transition-all duration-250"
 											>
-												<Github className="h-6 w-6" />
+												<GithubIcon size={22} className="h-6 w-6" />
 											</a>
 											<a
 												href={SocialConfig.linkedin}
 												className="text-purple-300 hover:text-purple-100 transition-all duration-250"
 											>
-												<Linkedin className="h-6 w-6" />
+												<LinkedinIcon size={22} className="h-6 w-6" />
 											</a>
 											<a
 												href={SocialConfig.email}
 												className="text-purple-300 hover:text-purple-100 transition-all duration-250"
 											>
-												<Mail className="h-6 w-6" />
+												<Mail className="h-5.5 w-5.5" />
 											</a>
 										</div>
 									</div>
