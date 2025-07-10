@@ -25,7 +25,7 @@ export const AwardGroup: React.FC<AwardGroupProps> = ({
 			transition={{ type: "spring", bounce: 0.2 }}
 		>
 			<Card className="border-purple-500/20 bg-gray-900/50">
-				<CardContent className="p-6">
+				<CardContent className="p-4.5 md:p-6">
 					<div className="space-y-6">
 						{/* Authority Badge */}
 						<Badge className="inline-flex items-center gap-2 px-3 py-1 text-base bg-purple-500/10 hover:bg-purple-500/20 transition-colors w-fit">

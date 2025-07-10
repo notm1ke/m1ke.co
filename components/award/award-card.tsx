@@ -7,7 +7,7 @@ import { Trophy, Calendar, AwardIcon } from "lucide-react";
 export const AwardCard: React.FC<{ award: Award }> = ({ award }) => {
 	return (
 		<Card className="border-purple-500/20 bg-gray-900/80">
-			<CardContent className="p-4">
+			<CardContent className="p-3 md:p-4">
 				<div className="flex flex-col gap-3">
 					<div className="flex items-start gap-3">
 						<Trophy className="h-4 w-4 text-yellow-500 shrink-0 mt-1.5" />

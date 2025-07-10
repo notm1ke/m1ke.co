@@ -5,7 +5,7 @@ import { GithubIcon } from "./ui/icons/github";
 import { LinkedinIcon } from "./ui/icons/linkedin";
 
 export const Footer: React.FC = () => (
-	<footer className="relative md:px-8 py-6 bg-black overflow-hidden">
+	<footer className="relative md:px-8 py-3 md:py-6 bg-black overflow-hidden">
 		<div className="absolute inset-0 z-0 opacity-40">
 			<Dither
 				waveColor={[0.5, 0.5, 0.5]}

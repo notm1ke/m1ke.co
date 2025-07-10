@@ -32,7 +32,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({ company, icon, positions, pr
 			className="motion-safe:hover:scale-[1.01] transition-transform"
 		>
 			<Card className="border-purple-500/20 bg-gray-900/50">
-				<CardContent className="p-6">
+				<CardContent className="p-4.5 md:p-6">
 					<DisclosureTrigger>
 						<div className="flex items-center justify-between cursor-pointer">
 							<Badge className="inline-flex items-center gap-2 px-3 py-1 text-base bg-purple-500/10 hover:bg-purple-500/20 transition-colors">
@@ -68,7 +68,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({ company, icon, positions, pr
 						</div>
 					</DisclosureTrigger>
 					<DisclosureContent>
-						<div className="pt-4">
+						<div className="md:pt-4">
 							<PositionTimeline positions={positions} />
 							<WorkProjects projects={projects} />
 						</div>
