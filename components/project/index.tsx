@@ -9,8 +9,11 @@ export const ProjectSection = () => {
 		<section id="projects">
 			<StickySectionHeader title="Personal Projects" />
 			<div className="grid gap-6 md:grid-cols-2">
-				{projects.map((project, posIndex) => (
-					<ProjectCard key={project.title} project={project} posIndex={posIndex} />
+				{projects.map(project => (
+					<ProjectCard
+						key={project.title}
+						project={project}
+					/>
 				))}
 			</div>
 		</section>
