@@ -63,7 +63,7 @@ interface DefaultIconProps<T = string> {
 }
 
 interface AnimateIconProps<T = string> extends DefaultIconProps<T> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line 
   children: React.ReactElement<any, any>;
 }
 
@@ -307,7 +307,7 @@ function getVariants<
 
   if (loop) {
     for (const key in result) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line
       const state = result[key] as any;
       const transition = state.animate?.transition;
       if (!transition) continue;
