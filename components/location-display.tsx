@@ -1,7 +1,7 @@
 "use client"
 
+import { motion } from "motion/react"
 import { Globe2, MapPin } from 'lucide-react'
-import { motion } from "framer-motion"
 
 interface LocationDisplayProps {
   location: string

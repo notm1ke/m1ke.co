@@ -2,11 +2,12 @@
 
 import moment from "moment";
 
-import { motion } from "framer-motion";
-import { ExperiencePosition, isIrregularEmployment } from "./data";
+import { css } from "~/util";
+import { motion } from "motion/react";
 import { DateDisplay } from "../date-display";
 import { Calendar, Clock } from "lucide-react";
 import { LocationDisplay } from "../location-display";
+import { ExperiencePosition, isIrregularEmployment } from "./data";
 
 export const PositionTimeline: React.FC<{
 	positions: Array<ExperiencePosition>
@@ -20,11 +21,15 @@ export const PositionTimeline: React.FC<{
 	
 	return (
 		<motion.div exit={{opacity: 0, y: -20}} layout className="mt-6 relative">
-			{sorted.map((position, posIndex) => (
+			{sorted.map((position, posIndex, arr) => (
 				<motion.div
 					layout
 					key={posIndex}
-					className={`relative ${hasMultiplePositions ? "sm:pl-10" : ""} pb-6 last:pb-0`}
+					className={css(
+						'relative pb-6 last:pb-0',
+						hasMultiplePositions && 'sm:pl-10',
+						hasMultiplePositions && posIndex !== 0 && "-mt-1"
+					)}
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
 					exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
@@ -33,18 +38,11 @@ export const PositionTimeline: React.FC<{
 						layout: { type: "spring", bounce: 0.2 },
 					}}
 				>
-					{/* Timeline dot and line */}
 					{hasMultiplePositions && (
 						<div className="absolute left-[14px] top-2 bottom-0 flex-col items-center hidden sm:flex">
-							<motion.div
-								layout
-								className="w-3 h-3 rounded-full bg-purple-500/40 ring-4 ring-purple-500/20"
-							/>
+							<motion.div layout className="w-3 h-3 rounded-full bg-purple-500/40 ring-4 ring-purple-500/20" />
 							{posIndex !== positions.length - 1 && (
-								<motion.div
-									layout
-									className="w-0.5 flex-1 bg-purple-500/20"
-								/>
+								<motion.div layout className="w-0.5 flex-1 bg-purple-500/20" />
 							)}
 						</div>
 					)}
@@ -61,7 +59,7 @@ export const PositionTimeline: React.FC<{
 											</span>
 										)}
 									</h4>
-									<p className="text-sm text-gray-400 max-w-[65ch]">
+									<p className="text-sm text-gray-400">
 										{position.description}
 									</p>
 								</div>

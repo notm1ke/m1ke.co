@@ -35,18 +35,22 @@ export const WorkCard: React.FC<WorkCardProps> = ({ company, icon, positions, pr
 				<CardContent className="p-4.5 md:p-6">
 					<DisclosureTrigger>
 						<div className="flex items-center justify-between cursor-pointer">
-							<Badge className="inline-flex items-center gap-2 px-3 py-1 text-base bg-purple-500/10 hover:bg-purple-500/20 transition-colors">
-								<Image
-									src={icon}
-									alt={company}
-									width={24}
-									height={24}
-									className="rounded-lg [filter:hue-rotate(-10deg)_saturate(70%)_brightness(0.9)]"
-								/>
-								<span className="font-medium text-purple-400">
-									{company}
-								</span>
-							</Badge>
+							<div className="group flex items-center gap-0">
+								<div className="flex items-center justify-center w-12 h-10 rounded-l-lg bg-purple-500/10 group-hover:bg-purple-500/20 border-y border-l border-purple-500/40 mr-[-1px] transition-colors duration-200">
+									<Image
+										src={icon}
+										alt={company}
+										width={28}
+										height={28}
+										className="rounded-lg [filter:hue-rotate(-10deg)_saturate(70%)_brightness(0.9)]"
+									/>
+								</div>
+								<Badge className="inline-flex items-center px-3 py-1.5 text-base bg-purple-500/10 hover:bg-purple-500/20 transition-colors duration-200 rounded-l-none border-y border-r border-purple-500/40 h-10">
+									<span className="font-medium text-purple-400">
+										{company}
+									</span>
+								</Badge>
+							</div>
 							<div className="flex items-center gap-4">
 								{!expanded && (
 									<div className="hidden sm:inline text-sm text-gray-400">
@@ -61,17 +65,15 @@ export const WorkCard: React.FC<WorkCardProps> = ({ company, icon, positions, pr
 									</div>
 								)}
 								<ChevronDown 
-									className="h-5 w-5 text-purple-400 transition-transform"
+									className="h-5 w-5 text-purple-400 transition-transform duration-500"
 									style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
 								/>
 							</div>
 						</div>
 					</DisclosureTrigger>
 					<DisclosureContent>
-						<div className="md:pt-4">
-							<PositionTimeline positions={positions} />
-							<WorkProjects projects={projects} />
-						</div>
+						<PositionTimeline positions={positions} />
+						<WorkProjects projects={projects} />
 					</DisclosureContent>
 				</CardContent>
 			</Card>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Badge } from "../ui/badge";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { AwardCard } from "./award-card";
 import { Card, CardContent } from "../ui/card";
 import { Award, AwardAuthority } from "./data";

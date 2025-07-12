@@ -49,9 +49,10 @@ const ilefaProjects: Project[] = [
 		lang: 'ts',
 		title: 'Cobalt',
 		visibility: 'public',
-		href: 'https://cobalt.lol',
+		href: 'https://cobalt.m1ke.co',
 		brief: 'Cobalt is a centralized hub for all things UConn.',
-		description: 'Cobalt is a centralized hub for all things UConn. It provides ease-of-access to a variety of services including searching courses, professor ratings, dining hall menus, room schedules, recreation center occupancy insights, residence hall imagery, and a whole lot more.'
+		description: 'Cobalt is a centralized hub for all things UConn. It provides ease-of-access to a variety of services including searching courses, professor ratings, dining hall menus, room schedules, recreation center occupancy insights, residence hall imagery, and a whole lot more.',
+		archived: true
 	},
 	{
 		type: 'web',
@@ -61,7 +62,7 @@ const ilefaProjects: Project[] = [
 		visibility: 'public',
 		href: 'https://ilefa.vercel.app/',
 		brief: 'The official website for ILEFA Labs. It contains a list of our projects.',
-		description: 'The official website for ILEFA Labs built with Next.js, serving as the main listing of our projects.'
+		description: 'The official website for ILEFA Labs. It contains a list of our projects and is built with Next.js, serving as the main listing of our projects.'
 	},
 	{
 		type: 'lib',
@@ -71,7 +72,7 @@ const ilefaProjects: Project[] = [
 		visibility: 'public',
 		href: 'https://github.com/ilefa/husky',
 		brief: 'Husky is a library for interacting with UConn resources.',
-		description: 'Husky is a lightweight Node.js library for interacting with various UConn resources, such as the course catalog, service statuses, and building codes.'
+		description: 'Husky is a library for interacting with UConn resources. It allows easy access to the course catalog, service statuses, and building codes.'
 	},
 	{
 		type: 'lib',
@@ -101,7 +102,7 @@ const ilefaProjects: Project[] = [
 		visibility: 'public',
 		href: 'https://github.com/ilefa/blueplate',
 		brief: 'Blueplate is a library for interacting with UConn Dining.',
-		description: 'Blueplate is a lightweight Node.js library for interacting with UConn Dining related resources such as dining hall menus, schedules, and more.'
+		description: 'Blueplate is a library for interacting with UConn Dining. It allows you to retrieve UConn Dining related resources such as dining hall menus, schedules, and more.'
 	},
 	{
 		type: 'lib',
@@ -111,7 +112,7 @@ const ilefaProjects: Project[] = [
 		visibility: 'public',
 		href: 'https://github.com/ilefa/bluefit',
 		brief: 'Bluefit is a library for extracting the realtime Rec Center occupancy.',
-		description: 'Bluefit is a lightweight Node.js library used for extracting realtime Rec Center occupancy information by connecting to the Socket.io stream powering the Rec mobile app.'
+		description: 'Bluefit is a library for extracting the realtime Rec Center occupancy.'
 	},
 	{
       type: 'lib',
@@ -121,7 +122,7 @@ const ilefaProjects: Project[] = [
       visibility: 'public',
       href: 'https://github.com/ilefa/bluepages',
       brief: 'Bluepages is a library for interacting with UConn\'s directory.',
-      description: 'Bluepages is a lightweight Node.js library for interacting with UConn\'s people directory service.'
+      description: 'Bluepages is a library for interacting with UConn\'s directory. It queries the UConn Phonebook and allows you to retrieve publicly available information and faculty and staff.'
 	},
 	{
 		type: 'lib',
@@ -131,7 +132,7 @@ const ilefaProjects: Project[] = [
 		visibility: 'public',
 		href: 'https://github.com/ilefa/bluestudy',
 		brief: 'Bluestudy is a library for interacting with UConn\'s Library Study Rooms.',
-		description: 'Bluestudy is a lightweight Node.js library for querying UConn Library Study Rooms availability.'
+		description: 'Bluestudy is a library for interacting with UConn\'s Library Study Rooms.'
 	},
 	{
 		type: 'lib',
@@ -141,7 +142,7 @@ const ilefaProjects: Project[] = [
 		visibility: 'public',
 		href: 'https://github.com/ilefa/bluetrade',
 		brief: 'Bluetrade is a library for interacting with UConn\'s Course Equivalencies.',
-		description: 'Bluetrade is a lightweight Node.js library for querying course equivalencies between UConn and other academic institutions.'
+		description: 'Bluetrade is a library for interacting with UConn\'s Course Equivalencies. It is lightweight and makes querying other academic institutions\' equivalent courses simple.'
 	},
 	{
 		type: 'lib',
@@ -151,7 +152,7 @@ const ilefaProjects: Project[] = [
 		visibility: 'public',
 		href: 'https://github.com/ilefa/snapshots',
 		brief: 'Snapshots is a public UConn data archival repository.',
-		description: 'Snapshots is a public UConn data ardhival (courses, professors, campus info, etc.), over the course of several semesters. It contains both the snapshotted data and a toolkit for taking snapshots.'
+		description: 'Snapshots is a public UConn data archival repository. It contains courses, professors, campus info, and more, over the course of several semesters. It contains both the snapshotted data and a toolkit for taking snapshots.'
 	},
 	{
 		type: 'lib',

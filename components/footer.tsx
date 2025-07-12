@@ -5,21 +5,21 @@ import { GithubIcon } from "./ui/icons/github";
 import { LinkedinIcon } from "./ui/icons/linkedin";
 
 export const Footer: React.FC = () => (
-	<footer className="relative md:px-8 py-3 md:py-6 bg-black overflow-hidden">
-		<div className="absolute inset-0 z-0 opacity-40">
+	<footer className="relative md:px-8 py-3 md:mb-5 md:py-6 bg-black overflow-hidden">
+		<div className="absolute inset-0 z-0 opacity-40 flex items-center justify-center">
 			<Dither
-				waveColor={[0.5, 0.5, 0.5]}
+				waveColor={[0.7, 0.5, 1.0]}
 				disableAnimation={false}
 				enableMouseInteraction={false}
-				colorNum={4}
-				waveAmplitude={0.23}
-				waveFrequency={3.9}
-				waveSpeed={0.02}
+				colorNum={6}
+				waveAmplitude={0.3}
+				waveFrequency={4.7}
+				waveSpeed={0.03}
 			/>
 		</div>
-		
-		<div className="container flex flex-row items-center justify-between gap-4 m:6-24">
-			<div className="font-mono text-center text-white md:text-left z-10">
+
+		<div className="max-w-6xl mx-auto px-6 flex flex-row items-center justify-between gap-4">
+			<div className="font-mono text-center text-white md:text-left z-10 ml-3">
 				<a
 					href="https://www.m1ke.co"
 					className="font-bold text-white hover:text-white/60"
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => (
 				</a>{" "}
 				&copy; 2016-{new Date().getFullYear()}
 			</div>
-			<div className="flex gap-3">
+			<div className="flex">
 				<Button
 					asChild
 					variant="link"

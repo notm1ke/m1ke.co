@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Project } from "../project/data";
 import { Badge } from "~/components/ui/badge";
 import { Globe, Code2, Library } from "lucide-react";
@@ -70,10 +70,7 @@ export function WorkProjects({ projects }: WorkProjectsProps) {
 
 	return (
 		<motion.div layout className="mt-6 border-t border-purple-500/20 pt-4">
-			<motion.h4 layout className="text-sm font-medium text-purple-400 mb-4">
-				Related Projects
-			</motion.h4>
-			<motion.div layout className="grid gap-4 md:grid-cols-2 relative">
+			<motion.div layout className="grid gap-4 md:grid-cols-3 relative">
 				{projects.map(project => (
 					<ProjectCard
 						key={project.title}

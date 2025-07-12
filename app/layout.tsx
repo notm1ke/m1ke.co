@@ -1,3 +1,5 @@
+import LocalFont from "next/font/local";
+
 import { css } from "~/util";
 import type { Metadata } from "next";
 import { Footer } from "~/components/footer";
@@ -9,6 +11,9 @@ import "~/styles/globals.css";
 
 const sans = Open_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const mono = Roboto_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const offbit = LocalFont({ src: './fonts/offbit-101-bold.ttf', variable: "--font-offbit" });
+const offbitDots = LocalFont({ src: './fonts/offbit-dots-bold.ttf', variable: "--font-offbit-dots" });
+
 
 export const metadata: Metadata = {
 	title: {
@@ -41,10 +46,12 @@ export default function RootLayout({
 					"min-h-screen bg-pattern font-sans antialiased",
 					sans.variable,
 					mono.variable,
+					offbit.variable,
+					offbitDots.variable,
 				)}
 			>
 				<ThemeProvider attribute="class" defaultTheme="dark">
-					<div className="relative flex min-h-screen flex-col font-mono">
+					<div className="relative flex min-h-screen flex-col font-mono bg-black">
 						<div className="flex-1">{children}</div>
 						<Footer />
 					</div>

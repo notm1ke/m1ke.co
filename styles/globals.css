@@ -48,6 +48,9 @@
 	--animate-accordion-up: accordion-up 0.2s ease-out;
 	--animate-border: border 4s linear infinite;
 	--animate-moving-banner: moving-banner 20s linear infinite;
+	
+	--font-offbit: "offbit", sans-serif; 
+	--font-offbit-dots: "offbit-dots", sans-serif; 
 
 	@keyframes accordion-down {
 		from {

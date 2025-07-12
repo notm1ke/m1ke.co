@@ -3,12 +3,13 @@
 import Image from "next/image";
 
 import { css, SocialConfig } from "~/util";
-import { Mail, MapPinHouse, MapPinned } from "lucide-react";
 import { Banner } from "~/components/ui/banner";
 import { WorkSection } from "~/components/work";
+import { Send } from "~/components/ui/icons/send";
 import { AwardSection } from "~/components/award";
 import { Separator } from "~/components/ui/separator";
 import { ProjectSection } from "~/components/project";
+import { ArrowRight, MapPinHouse } from "lucide-react";
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { EducationSection } from "~/components/education";
 import { GithubIcon } from "~/components/ui/icons/github";
@@ -33,7 +34,7 @@ export default function Home() {
 				/>
 			</div>
 			<div className="mx-auto max-w-6xl px-4 -mt-2 sm:mt-0 sm:pt-1 pb-8">
-				<div className="grid gap-8 md:grid-cols-[1fr_250px]">
+				<div className="grid gap-8">
 					<div className="space-y-12">
 						<div className="flex items-center gap-8 mt-2 sm:mt-12">
 							<Image
@@ -45,7 +46,7 @@ export default function Home() {
 								style={{ filter: `sepia(100%) saturate(175%) brightness(95%) hue-rotate(222deg)` }}
 							/>
 							<div className="flex flex-col justify-center h-[120px] mt-8 sm:mt-0 sm:h-[180px]">
-								<span className="text-2xl text-purple-500 font-extrabold font-mono tracking-tighter">
+								<span className="text-5xl text-purple-500 font-extrabold font-offbit-dots">
 									Mike Medved
 								</span>
 								<div className="mt-3">
@@ -82,7 +83,7 @@ export default function Home() {
 												href={SocialConfig.email}
 												className="text-purple-300 hover:text-purple-100 transition-all duration-250"
 											>
-												<Mail className="h-5.5 w-5.5" />
+												<Send animateOnHover className="h-5.5 w-5.5" />
 											</a>
 										</div>
 									</div>
@@ -104,7 +105,7 @@ export default function Home() {
 					</div>
 
 					{/* Sidebar */}
-					<div className="sticky top-8 h-screen pt-12 hidden sm:inline">
+					<div className="sticky top-8 h-screen pt-12 hidden">
 						<ScrollArea className="h-[calc(100vh-6rem)]">
 							<nav className="space-y-2">
 								<h3 className="mb-4 text-lg font-bold text-purple-400">
@@ -116,13 +117,15 @@ export default function Home() {
 											key={section}
 											href={`#${section}`}
 											className={css(
-												`block text-sm transition-all duration-250`,
+												`group block text-sm transition-all duration-250`,
 													activeSection === section && "text-purple-400",
 													activeSection !== section && "text-gray-400 hover:text-purple-400"
 											)}
 										>
-											{section.charAt(0).toUpperCase() +
-												section.slice(1)}
+											<span className="inline-block w-0 group-hover:w-2 mr-0 group-hover:mr-2 opacity-0 group-hover:opacity-100 transition-all duration-500 align-middle">
+												<ArrowRight className="size-3 -mt-0.5" />
+											</span>
+											{section.charAt(0).toUpperCase() + section.slice(1)}
 										</a>
 									),
 								)}

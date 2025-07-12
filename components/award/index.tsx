@@ -4,7 +4,11 @@ import { StickySectionHeader } from "../sticky-section-header";
 
 export const AwardSection = () => (
 	<section id="honors">
-		<StickySectionHeader title="Honors & Awards" />
+		<StickySectionHeader
+			title="Honors & Awards"
+			amount={AwardAuthorities.length}
+		/>
+		
 		<div className="space-y-6">
 			{AwardAuthorities.map((authority) => {
 				const authorityAwards = Awards.filter(
