@@ -6,6 +6,7 @@ import { Footer } from "~/components/footer";
 import { OpenPanelComponent } from "@openpanel/nextjs";
 import { Open_Sans, Roboto_Mono } from "next/font/google";
 import { ThemeProvider } from "~/components/ui/theme-provider";
+import { SectionControlsProvider } from "~/components/section/context";
 
 import "~/styles/globals.css";
 
@@ -34,7 +35,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html
+			lang="en"
+			className="[scrollbar-color:--alpha(var(--foreground)/20%)_transparent] [scrollbar-width:thin]"
+			suppressHydrationWarning
+		>
 			<head>
 				<meta
 					name="viewport"
@@ -44,6 +49,7 @@ export default function RootLayout({
 			<body
 				className={css(
 					"min-h-screen bg-pattern font-sans antialiased",
+					"",
 					sans.variable,
 					mono.variable,
 					offbit.variable,
@@ -51,10 +57,12 @@ export default function RootLayout({
 				)}
 			>
 				<ThemeProvider attribute="class" defaultTheme="dark">
-					<div className="relative flex min-h-screen flex-col font-mono bg-black">
-						<div className="flex-1">{children}</div>
-						<Footer />
-					</div>
+					<SectionControlsProvider>
+						<div className="relative flex min-h-screen flex-col font-mono bg-black">
+							<div className="flex-1">{children}</div>
+							<Footer />
+						</div>
+					</SectionControlsProvider>
 					<OpenPanelComponent
 						apiUrl="/api/op"
 						cdnUrl={process.env.NEXT_PUBLIC_OPENPANEL_CDN_URL!}

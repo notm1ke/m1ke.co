@@ -46,7 +46,7 @@ export default function Home() {
 								style={{ filter: `sepia(100%) saturate(175%) brightness(95%) hue-rotate(222deg)` }}
 							/>
 							<div className="flex flex-col justify-center h-[120px] mt-8 sm:mt-0 sm:h-[180px]">
-								<span className="text-5xl text-purple-500 font-extrabold font-offbit-dots">
+								<span className="text-4xl sm:text-5xl text-purple-500 font-extrabold font-offbit-dots">
 									Mike Medved
 								</span>
 								<div className="mt-3">
