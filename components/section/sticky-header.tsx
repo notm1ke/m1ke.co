@@ -62,7 +62,7 @@ export function StickySectionHeader({ id, title, amount, className, sectionRef }
 	return (
 		<motion.div
 			ref={ref}
-			className={css("flex items-center gap-4 mb-6 sticky -top-px z-10 cursor-pointer", className)}
+			className={css("flex items-center gap-4 mb-6 sticky -top-px z-10", className)}
 			style={{
 				paddingTop: isStuck ? "1rem" : "0",
 				paddingBottom: isStuck ? "1rem" : "0",
@@ -70,7 +70,7 @@ export function StickySectionHeader({ id, title, amount, className, sectionRef }
 				backdropFilter: isStuck ? "blur(8px)" : "none",
 			}}
 		>
-			<h2 onClick={handleClick} className="text-2xl font-semibold text-purple-400 font-offbit">
+			<h2 onClick={handleClick} className="text-2xl font-semibold text-purple-400 font-offbit cursor-pointer">
 				{title}
 			</h2>
 			<Separator className="flex-1 bg-purple-500/40" />
