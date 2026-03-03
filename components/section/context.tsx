@@ -226,7 +226,7 @@ export function SectionControlsProvider({ children }: SectionControlsProviderPro
 									<button
 										key={section.id}
 										onClick={() => navigateToSection(section.id)}
-										className="w-full p-3 text-left rounded-lg hover:bg-purple-500/20 transition-colors text-purple-200/60 hover:text-purple-200 font-offbit cursor-pointer"
+										className="w-full p-3 text-left rounded-lg hover:bg-purple-500/20 transition-colors text-purple-200/60 hover:text-purple-200 font-pixel-square cursor-pointer"
 									>
 										<span className="font-medium">{section.title}</span>
 									</button>
@@ -236,7 +236,7 @@ export function SectionControlsProvider({ children }: SectionControlsProviderPro
 
 						{currentSection && (
 							<div className="p-3 bg-purple-500/30 rounded-lg">
-								<span className="font-semibold text-purple-200 font-offbit cursor-not-allowed">{currentSection.title}</span>
+								<span className="font-semibold text-purple-200 font-pixel-square cursor-not-allowed">{currentSection.title}</span>
 							</div>
 						)}
 
@@ -246,7 +246,7 @@ export function SectionControlsProvider({ children }: SectionControlsProviderPro
 									<button
 										key={section.id}
 										onClick={() => navigateToSection(section.id)}
-										className="w-full p-3 text-left rounded-lg hover:bg-purple-500/20 transition-colors text-purple-200/60 hover:text-purple-200 font-offbit cursor-pointer"
+										className="w-full p-3 text-left rounded-lg hover:bg-purple-500/20 transition-colors text-purple-200/60 hover:text-purple-200 font-pixel-square cursor-pointer"
 									>
 										<span className="font-medium">{section.title}</span>
 									</button>

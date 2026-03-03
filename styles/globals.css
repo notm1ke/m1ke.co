@@ -51,6 +51,10 @@
 	
 	--font-offbit: "offbit", sans-serif; 
 	--font-offbit-dots: "offbit-dots", sans-serif; 
+	
+	--font-pixel-circle: var(--font-geist-pixel-circle);
+	--font-pixel-square: var(--font-geist-pixel-square);
+	--font-pixel-line: var(--font-geist-pixel-line);
 
 	@keyframes accordion-down {
 		from {

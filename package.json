@@ -22,15 +22,15 @@
     "@react-three/postprocessing": "^3.0.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.18.2",
+    "geist": "^1.7.0",
     "lucide-react": "^0.475.0",
     "moment": "^2.30.1",
-    "motion": "^12.23.3",
-    "next": "15.3.8",
+    "motion": "^12.34.4",
+    "next": "16.1.6",
     "next-themes": "^0.3.0",
     "postprocessing": "^6.37.6",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.178.0",
@@ -39,16 +39,16 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^20",
-    "@types/react": "19.1.2",
-    "@types/react-dom": "19.1.2",
-    "eslint": "^8",
-    "eslint-config-next": "15.3.1",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "eslint": "^10.0.2",
+    "eslint-config-next": "16.1.6",
     "postcss": "^8",
     "tailwindcss": "^4.0.0",
     "typescript": "^5"
   },
   "overrides": {
-    "@types/react": "19.1.2",
-    "@types/react-dom": "19.1.2"
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3"
   }
 }
