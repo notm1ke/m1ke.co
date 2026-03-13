@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { Project } from "../project/data";
-import { Badge } from "~/components/ui/badge";
 import { Globe, Code2, Library } from "lucide-react";
 import { ProjectCard } from "../project/project-card";
 
@@ -21,63 +20,18 @@ export const projectTypeIcons: Record<Project["type"], React.FC<IconProps>> = {
 	misc: Code2,
 };
 
-export const langIndicator = ({ lang }: Project) => {
-	if (lang === "ts")
-		return (
-			<Badge variant="secondary" className="bg-sky-600/20 text-sky-600 shrink-0 hover:bg-sky-400/10">
-				{lang}
-			</Badge>
-		);
-
-	if (lang === "js")
-		return (
-			<Badge variant="secondary" className="bg-yellow-300/20 text-yellow-300 shrink-0 hover:bg-yellow-300/10">
-				{lang}
-			</Badge>
-		);
-
-	if (lang === "py")
-		return (
-			<Badge variant="secondary" className="bg-teal-400/20 text-teal-400 shrink-0 hover:bg-teal-400/10">
-				{lang}
-			</Badge>
-		);
-
-	if (lang === "java")
-		return (
-			<Badge variant="secondary" className="bg-orange-400/20 text-orange-400 shrink-0 hover:bg-orange-400/10">
-				{lang}
-			</Badge>
-		);
-
-	if (lang === "html")
-		return (
-			<Badge variant="secondary" className="bg-red-400/20 text-red-400 shrink-0 hover:bg-red-400/10">
-				{lang}
-			</Badge>
-		);
-
-	if (lang === "ps")
-		return (
-			<Badge variant="secondary" className="bg-blue-400/20 text-blue-400 shrink-0 hover:bg-blue-400/10">
-				{lang}
-			</Badge>
-		);
-};
-
 export function WorkProjects({ projects }: WorkProjectsProps) {
 	if (!projects?.length) return null;
 
 	return (
-		<motion.div layout className="mt-6 border-t border-purple-500/20 pt-4">
-			<motion.div layout className="grid gap-4 md:grid-cols-3 relative">
-				{projects.map(project => (
-					<ProjectCard
-						key={project.title}
-						project={project}
-					/>
-				))}
-			</motion.div>
+		<motion.div layout className="flex flex-row flex-wrap gap-2">
+			{projects.map((project, i) => (
+				<ProjectCard
+					key={project.title}
+					project={project}
+					i={i}
+				/>
+			))}
 		</motion.div>
 	);
 }

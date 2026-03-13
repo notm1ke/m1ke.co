@@ -3,7 +3,6 @@
 import Image from "next/image";
 
 import { css, SocialConfig } from "~/util";
-import { Banner } from "~/components/ui/banner";
 import { WorkSection } from "~/components/work";
 import { Send } from "~/components/ui/icons/send";
 import { AwardSection } from "~/components/award";
@@ -13,6 +12,7 @@ import { ArrowRight, MapPinHouse } from "lucide-react";
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { EducationSection } from "~/components/education";
 import { GithubIcon } from "~/components/ui/icons/github";
+import { PixelBlast } from "~/components/ui/dither-banner";
 import { LinkedinIcon } from "~/components/ui/icons/linkedin";
 import { useSectionObserver } from "~/hooks/use-section-observer";
 
@@ -21,18 +21,48 @@ export default function Home() {
 
 	return (
 		<div className="min-h-screen bg-black text-white">
-			<div className="relative w-full backdrop-blur-md backdrop-filter blur-md hidden sm:block">
-				<Banner
-					height="6rem"
-					variant="vaporwave"
+			<div className="relative w-full h-[3rem] sm:h-[6rem]">
+				<PixelBlast
+					variant="square"
+					pixelSize={3}
+					color="#B19EEF"
+					patternScale={3.5}
+					patternDensity={1.25}
+					pixelSizeJitter={0}
+					enableRipples={false}
+					rippleSpeed={0.4}
+					rippleThickness={0.12}
+					rippleIntensityScale={1.5}
+					liquid={false}
+					liquidStrength={0.12}
+					liquidRadius={1.2}
+					liquidWobbleSpeed={5}
+					speed={0.6}
+					edgeFade={0.25}
+					transparent
 				/>
 			</div>
-			<div className="relative w-full sm:hidden">
-				<Banner
-					height="2rem"
-					variant="vaporwave"
+			{/*<div className="relative w-full sm:hidden h-[2rem]">
+				<PixelBlast
+					variant="square"
+					pixelSize={3}
+					color="#B19EEF"
+					patternScale={3.5}
+					patternDensity={1.5}
+					pixelSizeJitter={0}
+					enableRipples={false}
+					rippleSpeed={0.4}
+					rippleThickness={0.12}
+					rippleIntensityScale={1.5}
+					liquid={false}
+					liquidStrength={0.12}
+					liquidRadius={1.2}
+					liquidWobbleSpeed={5}
+					speed={0.6}
+					edgeFade={0.25}
+					transparent
 				/>
-			</div>
+			</div>*/}
 			<div className="mx-auto max-w-6xl px-4 -mt-2 sm:mt-0 sm:pt-1 pb-8">
 				<div className="grid gap-8">
 					<div className="space-y-12">
@@ -51,21 +81,13 @@ export default function Home() {
 								</span>
 								<div className="mt-3">
 									<span className="text-md sm:text-lg font-semibold text-gray-200">
-										SWE @ Walmart, CS Alumni @ UConn
+										Engineering @ Twocents
 									</span>
 									<br />
 									<span className="text-md sm:text-lg text-gray-400">
-										Full Stack Software Engineer
+										SF, California
 									</span>
 									<div className="flex items-center gap-4 mt-4">
-										<div className="flex items-center gap-1 text-md text-purple-300">
-											<MapPinHouse className="h-5.5 w-5.5 mr-1" />
-											Bay Area
-										</div>
-										<Separator
-											orientation="vertical"
-											className="h-6 bg-purple-500/40"
-										/>
 										<div className="flex items-center gap-4">
 											<a
 												href={SocialConfig.github}

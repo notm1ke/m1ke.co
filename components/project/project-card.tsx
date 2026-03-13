@@ -2,172 +2,72 @@
 
 import { css } from "~/util";
 import { Project } from "./data";
-import { JSX, useState } from "react";
-import { Badge } from "~/components/ui/badge";
-import { TextEffect } from "../ui/text-effect";
-import { Card, CardContent } from "~/components/ui/card";
-import { projectTypeIcons, langIndicator } from "../work/work-projects";
-import { Disclosure, DisclosureContent, DisclosureTrigger } from "../ui/disclosure";
-
-import {
-	Archive,
-	BriefcaseBusiness,
-	Earth,
-	EarthLock,
-	ExternalLink,
-	FolderGit2,
-	Unlink,
-} from "lucide-react";
+import { motion } from "motion/react";
+import { getLangIcon } from "./lang-icon";
+import { SiteFavicon } from "../site-favicon";
+import { PreviewCard } from "../ui/preview-card";
 
 interface WorkProjectCardProps {
 	project: Project;
+	i: number;
 }
 
-const ArchivedIndicator = () => (
-	<Badge variant="outline" className="bg-yellow-600 text-yellow-100">
-		<Archive className="w-4 h-4 mr-2" /> Archived
-	</Badge>
-);
-
-const VisibilityIndicator: React.FC<{ project: Project }> = ({ project }) => (
-	<>
-		{project.visibility === "public" && (
-			<Badge variant="outline" className="bg-green-600 text-green-100">
-				<Earth className="w-4 h-4 mr-2" /> Public
-			</Badge>
-		)}
-		{project.visibility === "private" && (
-			<Badge variant="outline" className="bg-red-500 text-red-200">
-				<EarthLock className="w-4 h-4 mr-2" /> Private
-			</Badge>
-		)}
-		{project.visibility === "internal" && (
-			<Badge variant="outline" className="bg-blue-600 text-blue-200">
-				<BriefcaseBusiness className="w-4 h-4 mr-2" /> Internal
-			</Badge>
-		)}
-	</>
-);
-
-const GoLink: React.FC<{ href?: string }> = ({ href }) => {
-	if (!href)
-		return (
-			<div className="flex items-center gap-2 text-red-400 hover:text-red-300">
-				<Unlink className="w-4 h-4 mr-1" /> No Link
-			</div>
-		);
-
-	if (
-		href &&
-		/http(s)*:\/{2}((github|gitlab).com)\/([a-zA-Z0-9\-_])+\/([a-zA-Z0-9\-_])+(.git)*/.test(
-			href,
-		)
-	)
-		return (
-			<a href={href} target="_blank" className="flex items-center gap-2">
-				<FolderGit2 className="w-4 h-4 mr-1" /> Repo
-			</a>
-		);
-
-	return (
-		<a
-			href={href}
-			target="_blank"
-			rel="noopener noreferrer"
-			className="flex items-center gap-2"
-		>
-			<ExternalLink className="w-4 h-4 mr-1" /> Visit
-		</a>
+const getProjectIcon = (project: Project, className?: string) => {
+	if (project.type === "web" && project.href) return (
+		<SiteFavicon
+			url={project.href}
+			className={css(className)}
+		/>
 	);
-};
+	
+	const Icon = getLangIcon(project.lang);
+	return <Icon className={css("size-4 shrink-0 text-purple-200", className)} />
+}
 
-export const ProjectCard: React.FC<WorkProjectCardProps> = ({ project }) => {
-	const [expanded, setExpanded] = useState(false);
-
-	const Icon = projectTypeIcons[project.type];
-	const indicators: JSX.Element[] = [
-		<VisibilityIndicator key="visibility" project={project} />,
-	];
-
-	if (project.archived) indicators.push(<ArchivedIndicator />);
-
-	const trigger = () => {
-		if (expanded) {
-			setTimeout(() => setExpanded(false), 500);
-			return;
-		}
-
-		setExpanded(true);
-	};
-
+const WorkProjectPill: React.FC<WorkProjectCardProps> = ({ project, i}) => {
 	return (
-		<Disclosure
-			open={expanded}
-			onOpenChange={trigger}
-			className={css(expanded && "cursor-pointer")}
+		<motion.div
+			className="flex flex-row space-x-1.5 p-1 rounded-lg items-center bg-purple-900/40 border border-purple-900/60 cursor-pointer"
+			initial={{ opacity: 0, scale: 0.8, x: -10 }}
+			animate={{ opacity: 1, scale: 1.0, x: 0 }}
+			transition={{ delay: i * (50 / 1000) }}
 		>
-			<Card className="border-purple-500/20 bg-gray-900/50 hover:bg-gray-900/80 transition-colors h-full">
-				<CardContent className={css("p-3 md:p-4", expanded && "pb-4")}>
-					<DisclosureTrigger>
-						<div className="flex items-start justify-between gap-4">
-							<div className="flex-1 min-w-0">
-								<div className="flex items-center gap-2 mb-2">
-									<Icon className="h-4 w-4 text-purple-400" />
-									<h3 className="font-medium truncate">
-										{project.title}
-									</h3>
-								</div>
-								<p
-									className={css(
-										"text-sm text-gray-400",
-										!expanded && "line-clamp-2",
-									)}
-								>
-									{!expanded && project.brief}
-								</p>
-							</div>
-							{project.lang && langIndicator(project)}
-						</div>
-					</DisclosureTrigger>
-					<DisclosureContent>
-						<>
-							{typeof project.description === "string" && (
-								<TextEffect
-									as="p"
-									per="char"
-									preset="fade"
-									speedReveal={15.0}
-									speedSegment={15.0}
-									className="text-sm text-gray-400"
-								>
-									{project.description}
-								</TextEffect>
-							)}
+			{getProjectIcon(project)}
+			<span className="text-xs">{project.title}</span>
+		</motion.div>
+	);
+}
 
-							{typeof project.description === "function" && project.description}
-
-							<div className="mt-4 md:border-t border-purple-500/20 pt-0 md:pt-4">
-								<div className="flex items-start justify-between mt-4">
-									<div className="basis-sm">
-										<div className="flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300">
-											<GoLink href={project.href} />
-										</div>
-									</div>
-									<div className="basis-lg">
-										<div className="flex space-x-1 justify-end">
-											{indicators.map((indicator, index) => (
-												<div key={index} className="flex">
-													{indicator}
-												</div>
-											))}
-										</div>
-									</div>
-								</div>
-							</div>
-						</>
-					</DisclosureContent>
-				</CardContent>
-			</Card>
-		</Disclosure>
+export const ProjectCard: React.FC<WorkProjectCardProps> = ({ project, i }) => {
+	return (
+		<PreviewCard
+			href={project.href}
+			trigger={<WorkProjectPill project={project} i={i} />}
+		>
+			<div className="p-2 flex flex-col space-y-2 text-sm">
+				<div className="flex flex-row justify-between">
+					<span className="flex flex-row items-center gap-2 font-bold">
+						{getProjectIcon(project)}
+						{project.title}
+					</span>
+				</div>
+				
+				<span className="text-xs break-words">
+					{project.description}
+				</span>
+				
+				{project.href && (
+					<span className="text-xs text-blue-400">
+						Click to open in new tab
+					</span>
+				)}
+				
+				{!project.href && project.visibility !== "public" && (
+					<span className="text-xs text-red-400">
+						No link - this is a{project.visibility === "internal" ? "n" : ""} {project.visibility} project
+					</span>
+				)}
+			</div>
+		</PreviewCard>
 	);
 };

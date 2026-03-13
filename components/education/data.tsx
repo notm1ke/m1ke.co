@@ -23,17 +23,17 @@ export const Education: Array<EducationEntry> = [
 		institution: "University of Connecticut",
 		location: "Storrs, CT",
 		image: "/logos/uconn.jpeg",
-		degreeType: "B.S",
+		degreeType: "B.S.",
 		major: "Computer Science",
 		minor: ["Mathematics"],
-		start: "Aug '20",
-		end: "May '24",
+		start: "Aug 2020",
+		end: "May 2024",
 		description: (
 			<div className="space-y-4">
 				<div>
 					Concentrated in Computational Data Analytics, with relevant
 					coursework containing:
-					<ul className="[&>li]:ml-5 [&>li]:list-disc">
+					<ul className="[&>li]:ml-4.5 [&>li]:[list-style-type:square]">
 						<li>Big Data Analytics</li>
 						<li>Database Systems</li>
 						<li>AI / Machine Learning</li>

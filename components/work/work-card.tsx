@@ -1,82 +1,64 @@
 "use client";
 
+import moment from "moment";
 import Image from "next/image";
 
 import { useState } from "react";
 import { Project } from "../project/data";
 import { calculateDuration } from "~/util";
 import { ExperiencePosition } from "./data";
-import { Badge } from "~/components/ui/badge";
-import { WorkProjects } from "./work-projects";
-import { ChevronDown, Slash } from "lucide-react";
 import { PositionTimeline } from "./position-timeline";
-import { Card, CardContent } from "~/components/ui/card";
 import { Disclosure, DisclosureContent, DisclosureTrigger } from "../ui/disclosure";
 
 interface WorkCardProps {
 	company: string;
 	icon: string;
 	positions: Array<ExperiencePosition>;
-	projects?: Array<Project>;
-	collapsed?: boolean;
+	projects: Array<Project>;
 }
 
-export const WorkCard: React.FC<WorkCardProps> = ({ company, icon, positions, projects, collapsed: collasped }) => {
-	const [expanded, setExpanded] = useState(!collasped);
-	const duration = calculateDuration(positions);
+export const WorkCard: React.FC<WorkCardProps> = ({ company, icon, positions, projects }) => {
+	const [expanded, setExpanded] = useState(false);
+	const latestPosition = positions[0];
+	const duration = calculateDuration([latestPosition]);
 
 	return (
-		<Disclosure
-			open={expanded}
-			onOpenChange={setExpanded}
-			className="motion-safe:hover:scale-[1.01] transition-transform"
-		>
-			<Card className="border-purple-500/20 bg-gray-900/50">
-				<CardContent className="p-4.5 md:p-6">
-					<DisclosureTrigger>
-						<div className="flex items-center justify-between cursor-pointer">
-							<div className="group flex items-center gap-0">
-								<div className="flex items-center justify-center w-12 h-10 rounded-l-lg bg-purple-500/10 group-hover:bg-purple-500/20 border-y border-l border-purple-500/40 mr-[-1px] transition-colors duration-200">
-									<Image
-										src={icon}
-										alt={company}
-										width={28}
-										height={28}
-										className="rounded-lg [filter:hue-rotate(-10deg)_saturate(70%)_brightness(0.9)]"
-									/>
-								</div>
-								<Badge className="inline-flex items-center px-3 py-1.5 text-base bg-purple-500/10 hover:bg-purple-500/20 transition-colors duration-200 rounded-l-none border-y border-r border-purple-500/40 h-10">
-									<span className="font-medium text-purple-400">
-										{company}
-									</span>
-								</Badge>
-							</div>
-							<div className="flex items-center gap-4">
-								{!expanded && (
-									<div className="hidden sm:inline text-sm text-gray-400">
-										{duration}
-										<Slash className="inline size-3.5 mx-2 text-gray-700" />
-										{positions.length} position
-										{positions.length !== 1 ? "s" : ""}
-										{(projects && projects.length > 0) && <Slash className="inline size-3.5 mx-2 text-gray-700" />}
-										{projects?.length
-											? `${projects.length} project${projects.length !== 1 ? "s" : ""}`
-											: ""}
-									</div>
-								)}
-								<ChevronDown 
-									className="h-5 w-5 text-purple-400 transition-transform duration-500"
-									style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
-								/>
-							</div>
+		<Disclosure open={expanded} onOpenChange={setExpanded}>
+			<DisclosureTrigger>
+				<div className="flex gap-4 items-stretch cursor-pointer px-3 py-2 -mx-3 -my-2 rounded-md transition-colors duration-150 hover:bg-purple-500/10">
+					<div className="flex items-center justify-center w-9 h-9 flex-shrink-0">
+						<Image
+							src={icon}
+							alt={company}
+							width={64}
+							height={64}
+							className="rounded [filter:brightness(0.9)]"
+						/>
+					</div>
+					<div className="space-y-1">
+						<div className="flex flex-wrap items-baseline gap-2">
+							<h3 className="text-sm font-medium text-foreground">
+								{company}
+							</h3>
+							<p className="text-sm text-muted-foreground">
+								{latestPosition.title}
+							</p>
 						</div>
-					</DisclosureTrigger>
-					<DisclosureContent>
-						<PositionTimeline positions={positions} />
-						<WorkProjects projects={projects} />
-					</DisclosureContent>
-				</CardContent>
-			</Card>
+						<div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground/70">
+							<span>{
+								latestPosition.current
+								? duration
+									: `${moment(latestPosition.start).format('MMM YYYY')} - ${moment(latestPosition.end).format('MMM YYYY')}`
+							}</span>
+							<span>•</span>
+							<span>{latestPosition.location}</span>
+						</div>
+					</div>
+				</div>
+			</DisclosureTrigger>
+			<DisclosureContent>
+				<PositionTimeline positions={positions} projects={projects} />
+			</DisclosureContent>
 		</Disclosure>
 	);
 }

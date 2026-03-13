@@ -2,6 +2,7 @@ import { PersonalProjects } from "./data";
 import { ProjectCard } from "./project-card";
 import { StickySectionHeader } from "../section/sticky-header";
 import { useRef } from "react";
+import { ProjectRow } from "./project-row";
 
 export const ProjectSection = () => {
 	const sectionRef = useRef<HTMLDivElement>(null);
@@ -14,11 +15,21 @@ export const ProjectSection = () => {
 				sectionRef={sectionRef}
 			/>
 			
-			<div className="grid gap-6 md:grid-cols-2">
+			{/*<div className="flex flex-wrap gap-2">
 				{PersonalProjects.map(project => (
 					<ProjectCard
 						key={project.title}
 						project={project}
+						i={-1}
+					/>
+				))}
+			</div>*/}
+			<div className="space-y-px">
+				{PersonalProjects.map((project, idx) => (
+					<ProjectRow
+						key={project.title}
+						project={project}
+						i={idx}
 					/>
 				))}
 			</div>
