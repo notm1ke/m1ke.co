@@ -70,11 +70,11 @@ export function StickySectionHeader({ id, title, amount, className, sectionRef }
 				backdropFilter: isStuck ? "blur(8px)" : "none",
 			}}
 		>
-			<h2 onClick={handleClick} className="text-2xl font-semibold text-purple-400 font-offbit cursor-pointer">
+			<h2 onClick={handleClick} className="text-xl sm:text-2xl font-semibold text-purple-400 font-pixel-square cursor-pointer">
 				{title}
 			</h2>
 			<Separator className="flex-1 bg-purple-500/40" />
-			{amount && <h4 className="text-xl text-purple-200 font-offbit">{amount}</h4>}
+			{amount && <h4 className="text-lg sm:text-xl font-semibold text-purple-100 font-pixel-square">{amount}</h4>}
 		</motion.div>
 	);
 }

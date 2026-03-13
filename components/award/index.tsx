@@ -14,7 +14,7 @@ export const AwardSection = () => {
 				sectionRef={sectionRef}
 			/>
 			
-			<div className="space-y-6">
+			<div className="space-y-px">
 				{AwardAuthorities.map((authority) => {
 					const authorityAwards = Awards.filter(
 						award => award.authority === authority.id

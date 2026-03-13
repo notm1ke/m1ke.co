@@ -1,7 +1,7 @@
+import { useRef } from "react";
 import { Education } from "./data";
 import { EducationCard } from "./edu-card";
 import { StickySectionHeader } from "../section/sticky-header";
-import { useRef } from "react";
 
 export const EducationSection = () => {
 	const sectionRef = useRef<HTMLDivElement>(null);

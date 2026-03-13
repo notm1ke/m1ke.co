@@ -11,8 +11,8 @@ export const Footer: React.FC = () => (
 				waveColor={[0.7, 0.5, 1.0]}
 				disableAnimation={false}
 				enableMouseInteraction={false}
-				colorNum={6}
-				waveAmplitude={0.3}
+				colorNum={3}
+				waveAmplitude={0.01}
 				waveFrequency={4.7}
 				waveSpeed={0.03}
 			/>

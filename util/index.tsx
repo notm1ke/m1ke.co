@@ -31,6 +31,10 @@ export const timeRange = (input: TimeRangeLike) => {
 	return `${start} ➜ ${end}`;
 };
 
+export const capitalizeFirst = (str: string) => {
+	return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
+
 export type GroupedBy<T> = {
 	[key: string]: T[];
 };
@@ -72,14 +76,12 @@ export const calculateDuration = (positions: Array<ExperiencePosition>): string 
 }
 
 export const formatDuration = (months: number): string => {
+	if (!months) return "Now";
+	
 	const years = Math.floor(months / 12);
 	const remainingMonths = months % 12;
 
-	if (years === 0) {
-		return `${remainingMonths} month${remainingMonths !== 1 ? "s" : ""}`;
-	} else if (remainingMonths === 0) {
-		return `${years}y`;
-	} else {
-		return `${years}y, ${remainingMonths}m`;
-	}
+	if (years === 0) return `${remainingMonths} month${remainingMonths !== 1 ? "s" : ""}`;
+	if (remainingMonths === 0) return `${years} year${years === 1 ? "" : "s"}`;
+	return `${years}yr, ${remainingMonths}mo`;
 }

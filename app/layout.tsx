@@ -1,11 +1,13 @@
 import LocalFont from "next/font/local";
 
+
 import { css } from "~/util";
 import type { Metadata } from "next";
 import { Footer } from "~/components/footer";
 import { OpenPanelComponent } from "@openpanel/nextjs";
 import { Open_Sans, Roboto_Mono } from "next/font/google";
 import { ThemeProvider } from "~/components/ui/theme-provider";
+import { GeistPixelCircle, GeistPixelLine, GeistPixelSquare } from "geist/font/pixel";
 import { SectionControlsProvider } from "~/components/section/context";
 
 import "~/styles/globals.css";
@@ -14,7 +16,6 @@ const sans = Open_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const mono = Roboto_Mono({ subsets: ["latin"], variable: "--font-mono" });
 const offbit = LocalFont({ src: './fonts/offbit-101-bold.ttf', variable: "--font-offbit" });
 const offbitDots = LocalFont({ src: './fonts/offbit-dots-bold.ttf', variable: "--font-offbit-dots" });
-
 
 export const metadata: Metadata = {
 	title: {
@@ -37,7 +38,7 @@ export default function RootLayout({
 	return (
 		<html
 			lang="en"
-			className="[scrollbar-color:--alpha(var(--foreground)/20%)_transparent] [scrollbar-width:thin]"
+			className={css("[scrollbar-color:--alpha(var(--foreground)/20%)_transparent] [scrollbar-width:thin]", GeistPixelCircle.variable, GeistPixelSquare.variable, GeistPixelLine.variable)}
 			suppressHydrationWarning
 		>
 			<head>
@@ -49,7 +50,6 @@ export default function RootLayout({
 			<body
 				className={css(
 					"min-h-screen bg-pattern font-sans antialiased",
-					"",
 					sans.variable,
 					mono.variable,
 					offbit.variable,

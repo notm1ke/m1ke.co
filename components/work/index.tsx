@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { WorkCard } from "./work-card";
 import { getProjectsByCompany, WorkExperience } from "./data";
 import { StickySectionHeader } from "../section/sticky-header";
@@ -15,7 +15,7 @@ export const WorkSection = () => {
 			/>
 			
 			<div className="space-y-8">
-				{WorkExperience.slice(0, 3).map((work, index) => (
+				{WorkExperience.map((work, index) => (
 					<WorkCard
 						key={index}
 						company={work.company}
@@ -24,20 +24,6 @@ export const WorkSection = () => {
 						projects={getProjectsByCompany(work)}
 					/>
 				))}
-				{WorkExperience.length > 3 && (
-					<>
-						{WorkExperience.slice(3).map((work, index) => (
-							<WorkCard
-								key={index + 3}
-								company={work.company}
-								icon={work.image}
-								positions={work.positions}
-								projects={getProjectsByCompany(work)}
-								collapsed
-							/>
-						))}
-					</>
-				)}
 			</div>
 		</section>
 	);
