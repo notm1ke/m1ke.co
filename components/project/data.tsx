@@ -597,4 +597,9 @@ export const Projects: Project[] = [
 	...warpProjects,
 ];
 
-export const PersonalProjects = meProjects;
+export const PersonalProjects: Project[] = meProjects.map(project => ({
+	...project,
+	type: "app",
+	brief: "<empty>",
+	position: 0
+}));
