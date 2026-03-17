@@ -22,8 +22,7 @@ export const metadata: Metadata = {
 		default: "Mike Medved",
 		template: `Mike Medved - %s`,
 	},
-	description:
-		"SWE @ Walmart. I love figuring out how things work and writing apps to help people.",
+	description: "Engineering @ Twocents. I love figuring out how things work and writing apps to help people.",
 	icons: {
 		icon: "/favicon.ico",
 		apple: "/apple-touch-icon.png",
